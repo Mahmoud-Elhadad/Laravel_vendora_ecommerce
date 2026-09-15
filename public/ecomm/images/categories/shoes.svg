@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="pgkj4a3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#43e97b"/><stop offset="100%" stop-color="#38f9d7"/>
+    </linearGradient>
+    <radialGradient id="pgkj4a3g" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="pgkj4a3p" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="500" height="500" fill="url(#pgkj4a3)"/>
+  <rect width="500" height="500" fill="url(#pgkj4a3p)"/>
+  <rect width="500" height="500" fill="url(#pgkj4a3g)"/>
+  <circle cx="250" cy="220" r="150" fill="#fff" opacity="0.16"/>
+  <g transform="translate(163.75 133.75) scale(7.1875)" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M2.5 16.5v-3.2l4-1 3-3.3 2.2 2 4.3 1.1c2.2.6 5.5 1.3 5.5 4.4v1z"/><path d="M2.5 16.5h19"/></g>
+  <rect x="0" y="434" width="500" height="66" fill="#000" opacity="0.16"/>
+  <text x="250" y="454" fill="#fff" font-size="23" font-weight="600" text-anchor="middle" opacity="0.97">Shoes</text>
+  
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bgi341" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5ee7df"/><stop offset="100%" stop-color="#b490ca"/>
+    </linearGradient>
+    <radialGradient id="bgi341g" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="bgi341p" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgi341)"/>
+  <rect width="800" height="500" fill="url(#bgi341p)"/>
+  <rect width="800" height="500" fill="url(#bgi341g)"/>
+  
+  <circle cx="656" cy="250" r="210" fill="#fff" opacity="0.10"/>
+  <circle cx="656" cy="250" r="150" fill="#fff" opacity="0.12"/>
+  <circle cx="80" cy="425" r="110" fill="#fff" opacity="0.08"/>
+  <g transform="translate(531 125) scale(10.416666666666666)" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12.5h5"/></g>
+</svg>

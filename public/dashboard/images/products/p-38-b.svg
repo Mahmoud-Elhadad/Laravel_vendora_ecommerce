@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Kestrel 24-70mm f/2.8 Lens">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9f9ef"/>
+      <stop offset="1" stop-color="#caf1d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <circle cx="200" cy="200" r="136" fill="#22c55e" opacity="0.07"/>
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#fff" stroke-width="10" opacity="0.35"/>
+  <g transform="translate(-70,-70) scale(1.35)">
+    <rect x="98" y="144" width="204" height="144" rx="22" fill="#22c55e"/>
+    <rect x="158" y="118" width="74" height="32" rx="11" fill="#22c55e"/>
+    <circle cx="200" cy="216" r="50" fill="#fff" opacity="0.26"/>
+    <circle cx="200" cy="216" r="34" fill="#fff" opacity="0.42"/>
+    <circle cx="200" cy="216" r="15" fill="#1a9447"/>
+    <circle cx="270" cy="174" r="9" fill="#fff" opacity="0.7"/>
+  </g>
+</svg>

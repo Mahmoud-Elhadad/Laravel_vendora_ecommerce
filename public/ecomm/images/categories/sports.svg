@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="pgh3d9h" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ba360"/><stop offset="100%" stop-color="#3cba92"/>
+    </linearGradient>
+    <radialGradient id="pgh3d9hg" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="pgh3d9hp" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="500" height="500" fill="url(#pgh3d9h)"/>
+  <rect width="500" height="500" fill="url(#pgh3d9hp)"/>
+  <rect width="500" height="500" fill="url(#pgh3d9hg)"/>
+  <circle cx="250" cy="220" r="150" fill="#fff" opacity="0.16"/>
+  <g transform="translate(163.75 133.75) scale(7.1875)" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M4 9v6M7 6.8v10.4M17 6.8v10.4M20 9v6M7 12h10"/></g>
+  <rect x="0" y="434" width="500" height="66" fill="#000" opacity="0.16"/>
+  <text x="250" y="454" fill="#fff" font-size="23" font-weight="600" text-anchor="middle" opacity="0.97">Sports</text>
+  
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="pgn45ys" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6d365"/><stop offset="100%" stop-color="#fda085"/>
+    </linearGradient>
+    <radialGradient id="pgn45ysg" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="pgn45ysp" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="500" height="500" fill="url(#pgn45ys)"/>
+  <rect width="500" height="500" fill="url(#pgn45ysp)"/>
+  <rect width="500" height="500" fill="url(#pgn45ysg)"/>
+  <circle cx="250" cy="220" r="150" fill="#fff" opacity="0.16"/>
+  <g transform="translate(163.75 133.75) scale(7.1875)" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><rect x="4.5" y="8" width="15" height="13" rx="2.2"/><path d="M8.6 8V6a3.4 3.4 0 0 1 6.8 0v2"/></g>
+  <rect x="0" y="434" width="500" height="66" fill="#000" opacity="0.16"/>
+  <text x="250" y="454" fill="#fff" font-size="23" font-weight="600" text-anchor="middle" opacity="0.97">Bags</text>
+  
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#152238"/>
+      <stop offset="100%" stop-color="#c9a227"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#g)"/>
+  <circle cx="983" cy="129" r="158" fill="rgba(255,255,255,0.10)"/>
+  <rect x="96" y="86" width="1008" height="547" rx="36" fill="rgba(255,255,255,0.10)"/>
+  <text x="600" y="360" text-anchor="middle" fill="#ffffff" font-size="66" font-family="Segoe UI, Arial" font-weight="700">Travel capsules</text>
+  <text x="600" y="396" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="42" font-family="Segoe UI, Arial">Journal</text>
+</svg>

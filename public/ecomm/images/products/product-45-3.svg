@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="pgbotwl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fa709a"/><stop offset="100%" stop-color="#fee140"/>
+    </linearGradient>
+    <radialGradient id="pgbotwlg" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="pgbotwlp" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#pgbotwl)"/>
+  <rect width="600" height="600" fill="url(#pgbotwlp)"/>
+  <rect width="600" height="600" fill="url(#pgbotwlg)"/>
+  <circle cx="300" cy="264" r="180" fill="#fff" opacity="0.16"/>
+  <g transform="translate(196.5 160.5) scale(8.624999999999998)" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><ellipse cx="12" cy="7" rx="3.4" ry="4"/><rect x="10" y="11" width="4" height="10" rx="1.4"/></g>
+  <rect x="0" y="534" width="600" height="66" fill="#000" opacity="0.16"/>
+  <text x="300" y="554" fill="#fff" font-size="27" font-weight="600" text-anchor="middle" opacity="0.97">Facial Cleansing</text>
+  <text x="300" y="584" fill="#fff" font-size="27" font-weight="600" text-anchor="middle" opacity="0.97">Brush</text>
+</svg>

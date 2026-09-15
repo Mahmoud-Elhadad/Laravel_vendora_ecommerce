@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="300" viewBox="0 0 420 300" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="ek3cl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#30cfd0"/><stop offset="100%" stop-color="#5b86e5"/>
+    </linearGradient>
+    <radialGradient id="ek3clg" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="ek3clp" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <circle cx="210" cy="120" r="86" fill="url(#ek3cl)" opacity="0.14"/>
+  <circle cx="210" cy="120" r="62" fill="url(#ek3cl)" opacity="0.20"/>
+  <g transform="translate(173 83) scale(3.0833333333333335)" fill="none" stroke="#5b86e5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></g>
+  <text x="210" y="240" fill="#3a3f4b" font-size="20" font-weight="700" text-anchor="middle">No results found</text>
+  <text x="210" y="266" fill="#8a90a0" font-size="14" text-anchor="middle">Try a different keyword or browse categories</text>
+</svg>

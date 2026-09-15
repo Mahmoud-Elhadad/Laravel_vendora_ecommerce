@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
+  <defs>
+    <linearGradient id="bmbnls" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea"/><stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+    <radialGradient id="bmbnlsg" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="bmbnlsp" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="560" fill="url(#bmbnls)"/>
+  <rect width="1200" height="560" fill="url(#bmbnlsp)"/>
+  <rect width="1200" height="560" fill="url(#bmbnlsg)"/>
+  
+  <circle cx="983.9999999999999" cy="280" r="235.2" fill="#fff" opacity="0.10"/>
+  <circle cx="983.9999999999999" cy="280" r="168" fill="#fff" opacity="0.12"/>
+  <circle cx="120" cy="476" r="123.2" fill="#fff" opacity="0.08"/>
+  <g transform="translate(843.9999999999999 140) scale(11.666666666666666)" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="2.5" y="14" width="4.5" height="7" rx="2.2"/><rect x="17" y="14" width="4.5" height="7" rx="2.2"/></g>
+</svg>

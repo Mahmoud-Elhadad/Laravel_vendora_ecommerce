@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="Laptops &amp; Computers">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2f4fc"/>
+      <stop offset="1" stop-color="#b7e4f8"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <circle cx="200" cy="132" r="96" fill="#0ea5e9" opacity="0.08"/>
+  <g transform="translate(120,52) scale(0.4)">
+    <rect x="108" y="118" width="184" height="126" rx="12" fill="#0ea5e9"/>
+    <rect x="120" y="130" width="160" height="102" rx="6" fill="#fff" opacity="0.3"/>
+    <path d="M136 214 l34 -46 26 30 22 -24 34 40 z" fill="#fff" opacity="0.35"/>
+    <path d="M84 250 h232 l20 32 a9 9 0 0 1 -8 14 H72 a9 9 0 0 1 -8 -14 z" fill="#0ea5e9"/>
+    <rect x="170" y="266" width="60" height="8" rx="4" fill="#fff" opacity="0.3"/>
+  </g>
+  <text x="200" y="262" text-anchor="middle" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="650" fill="#0a709e" letter-spacing="-0.4">Laptops &amp; Computers</text>
+</svg>

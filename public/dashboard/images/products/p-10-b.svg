@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Meridian Gaming Laptop G15">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e7f6fd"/>
+      <stop offset="1" stop-color="#c5e9fa"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <circle cx="200" cy="200" r="136" fill="#0ea5e9" opacity="0.07"/>
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#fff" stroke-width="10" opacity="0.35"/>
+  <g transform="translate(-70,-70) scale(1.35)">
+    <rect x="108" y="118" width="184" height="126" rx="12" fill="#0ea5e9"/>
+    <rect x="120" y="130" width="160" height="102" rx="6" fill="#fff" opacity="0.3"/>
+    <path d="M136 214 l34 -46 26 30 22 -24 34 40 z" fill="#fff" opacity="0.35"/>
+    <path d="M84 250 h232 l20 32 a9 9 0 0 1 -8 14 H72 a9 9 0 0 1 -8 -14 z" fill="#0ea5e9"/>
+    <rect x="170" y="266" width="60" height="8" rx="4" fill="#fff" opacity="0.3"/>
+  </g>
+</svg>

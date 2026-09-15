@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="Beauty &amp; Care">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5ebfe"/>
+      <stop offset="1" stop-color="#e5ccfd"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <circle cx="200" cy="132" r="96" fill="#a855f7" opacity="0.08"/>
+  <g transform="translate(120,52) scale(0.4)">
+    <path d="M200 96 c56 64 86 104 86 144 a86 86 0 0 1 -172 0 c0 -40 30 -80 86 -144 z" fill="#a855f7"/>
+    <path d="M172 240 a30 30 0 0 0 30 30" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round" opacity="0.6"/>
+  </g>
+  <text x="200" y="262" text-anchor="middle" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="650" fill="#723aa8" letter-spacing="-0.4">Beauty &amp; Care</text>
+</svg>

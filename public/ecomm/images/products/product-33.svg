@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="pgx0xju" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a18cd1"/><stop offset="100%" stop-color="#fbc2eb"/>
+    </linearGradient>
+    <radialGradient id="pgx0xjug" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="pgx0xjup" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#pgx0xju)"/>
+  <rect width="600" height="600" fill="url(#pgx0xjup)"/>
+  <rect width="600" height="600" fill="url(#pgx0xjug)"/>
+  <circle cx="300" cy="264" r="180" fill="#fff" opacity="0.16"/>
+  <g transform="translate(196.5 160.5) scale(8.624999999999998)" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M7 3v13a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4V3"/><path d="M7 8h10M7 12h10"/></g>
+  <rect x="0" y="534" width="600" height="66" fill="#000" opacity="0.16"/>
+  <text x="300" y="554" fill="#fff" font-size="27" font-weight="600" text-anchor="middle" opacity="0.97">Wool Winter Scarf</text>
+  
+</svg>

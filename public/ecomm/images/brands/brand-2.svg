@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="120" viewBox="0 0 300 120" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs><linearGradient id="br1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#667eea"/><stop offset="100%" stop-color="#764ba2"/></linearGradient></defs>
+  <rect width="300" height="120" rx="12" fill="#ffffff"/>
+  <circle cx="60" cy="60" r="26" fill="url(#br1)"/>
+  <text x="60" y="69" fill="#fff" font-size="26" font-weight="800" text-anchor="middle">V</text>
+  <text x="102" y="68" fill="#2b2f38" font-size="26" font-weight="700">Vista</text>
+</svg>

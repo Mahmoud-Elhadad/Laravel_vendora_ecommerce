@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <rect width="800" height="420" fill="#eef1f6"/>
+  <g stroke="#dfe4ee" stroke-width="10" fill="none">
+    <path d="M0 90h800M0 210h800M0 330h800M140 0v420M360 0v420M580 0v420"/>
+  </g>
+  <g stroke="#c9d2e2" stroke-width="4" fill="none"><path d="M0 150h800M250 0v420M470 0v420M690 0v420"/></g>
+  <rect x="360" y="210" width="220" height="120" rx="6" fill="#dbe3f0"/>
+  <rect x="140" y="90" width="110" height="120" rx="6" fill="#e3e9f4"/>
+  <g transform="translate(373 183) scale(2.25)" fill="none" stroke="#667eea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M9 3 3.5 5.5v15L9 18l6 3 5.5-2.5v-15L15 6z"/><path d="M9 3v15M15 6v15"/></g>
+  <circle cx="400" cy="205" r="16" fill="#667eea"/><circle cx="400" cy="205" r="7" fill="#fff"/>
+  <text x="400" y="255" fill="#4a5163" font-size="16" font-weight="600" text-anchor="middle">Vendora HQ — 24 Market Street</text>
+</svg>

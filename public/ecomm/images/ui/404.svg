@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="360" viewBox="0 0 560 360" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs><linearGradient id="nf" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#667eea"/><stop offset="100%" stop-color="#764ba2"/></linearGradient></defs>
+  <text x="280" y="200" fill="url(#nf)" font-size="150" font-weight="900" text-anchor="middle" letter-spacing="4">404</text>
+  <g opacity="0.9"><g transform="translate(420 60) scale(2.5)" fill="none" stroke="#764ba2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></g></g>
+  <circle cx="90" cy="90" r="40" fill="#667eea" opacity="0.10"/>
+  <circle cx="480" cy="280" r="54" fill="#764ba2" opacity="0.10"/>
+  <text x="280" y="255" fill="#5a6072" font-size="20" font-weight="600" text-anchor="middle">Oops! The page you are looking for was moved or removed.</text>
+</svg>

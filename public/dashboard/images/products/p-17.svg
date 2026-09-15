@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Orbex Tablet Pro 11&quot;">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3effe"/>
+      <stop offset="1" stop-color="#e3d8fd"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <circle cx="200" cy="200" r="136" fill="#8b5cf6" opacity="0.07"/>
+  
+  <g transform="translate(0,0) scale(1)">
+    <rect x="143" y="90" width="114" height="220" rx="24" fill="#8b5cf6"/>
+    <rect x="154" y="108" width="92" height="176" rx="14" fill="#fff" opacity="0.3"/>
+    <rect x="181" y="97" width="38" height="8" rx="4" fill="#fff" opacity="0.55"/>
+    <path d="M170 236 l26 -38 22 26 16 -18 20 30 z" fill="#fff" opacity="0.3"/>
+    <circle cx="200" cy="296" r="7" fill="#fff" opacity="0.5"/>
+  </g>
+</svg>

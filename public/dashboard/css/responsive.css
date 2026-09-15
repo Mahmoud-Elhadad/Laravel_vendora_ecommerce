@@ -1,0 +1,336 @@
+/* ============================================================================
+   NovaCart Admin — responsive.css
+   Breakpoint behaviour: the sidebar becomes an offcanvas drawer below lg,
+   tables collapse into mobile cards, charts shrink, forms stack, and the
+   topbar compacts. Ordered from widest to narrowest.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   xxl → xl  (≤ 1399.98px): tighten horizontal rhythm
+   ------------------------------------------------------------------------ */
+
+@media (max-width: 1399.98px) {
+  .main-content { padding: 1.1rem; }
+  .page-title { font-size: 1.3rem; }
+  .stat-value { font-size: 1.45rem; }
+  .chart-kpis { gap: 1rem; }
+}
+
+/* ---------------------------------------------------------------------------
+   xl → lg  (≤ 1199.98px): narrower sidebar, denser cards
+   ------------------------------------------------------------------------ */
+
+@media (max-width: 1199.98px) {
+  :root {
+    --nc-sidebar-width: 236px;
+  }
+  .card-body { padding: 1rem; }
+  .card-header { padding: 0.8rem 1rem; }
+  .table-toolbar { padding: 0.8rem 1rem; }
+  .table-footer { padding: 0.7rem 1rem; }
+  .bulk-bar { padding: 0.55rem 1rem; }
+  .form-section { padding: 1.05rem; }
+  .stat-card { padding: 0.9rem; }
+  .cell-entity-title { max-width: 200px; }
+  .topbar { padding: 0 1rem; }
+  .topbar-search { max-width: 320px; }
+}
+
+/* ---------------------------------------------------------------------------
+   ≤ 991.98px — sidebar becomes an offcanvas drawer
+   ------------------------------------------------------------------------ */
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    /* Bootstrap's responsive offcanvas owns positioning below lg; we only
+       control the width token and keep the dark surface. */
+    --bs-offcanvas-width: 264px;
+    width: 264px !important;
+    transition: transform 260ms var(--nc-ease), visibility 260ms var(--nc-ease);
+  }
+
+  /* Collapsed-rail state is desktop-only — force it off here. */
+  html.sidebar-collapsed .sidebar { width: 264px !important; }
+  html.sidebar-collapsed .sidebar-body { overflow-y: auto; padding: 0.7rem 0.6rem 1rem; }
+  html.sidebar-collapsed .sidebar-header { padding: 0 0.85rem 0 1rem; justify-content: space-between; }
+  html.sidebar-collapsed .sidebar-brand { justify-content: flex-start; width: auto; }
+  html.sidebar-collapsed .sidebar-user { justify-content: flex-start; padding: 0.4rem 0.45rem; }
+  html.sidebar-collapsed .brand-text,
+  html.sidebar-collapsed .sidebar-user-meta { display: flex; }
+  html.sidebar-collapsed .sidebar-nav .nav-link { justify-content: flex-start; padding: 0.5rem 0.65rem; gap: 0.7rem; }
+  html.sidebar-collapsed .nav-text,
+  html.sidebar-collapsed .nav-chevron,
+  html.sidebar-collapsed .nav-badge { display: initial; }
+  html.sidebar-collapsed .nav-badge { display: inline-block; }
+  html.sidebar-collapsed .nav-sublist { display: flex !important; }
+  html.sidebar-collapsed .nav-group:hover > .collapse {
+    position: static;
+    display: block;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    min-width: 0;
+  }
+  html.sidebar-collapsed .sidebar-nav > .nav-item:not(.nav-group):hover > .nav-link::after { display: none; }
+  html.sidebar-collapsed .sidebar-user-link { display: none; }
+
+  .main-wrapper,
+  html.sidebar-collapsed .main-wrapper { margin-left: 0; }
+
+  /* Topbar compaction */
+  .topbar { padding: 0 0.85rem; gap: 0.5rem; }
+  .topbar-search { max-width: none; }
+  .topbar-search-hint { display: none; }
+  .topbar-search .form-control { padding-right: 0.75rem; }
+
+  .page-header { align-items: flex-start; flex-direction: column; gap: 0.75rem; }
+  .page-header-actions { width: 100%; }
+  .page-header-actions .btn { flex: 1 1 auto; justify-content: center; }
+
+  .main-content { padding: 1rem 0.9rem; }
+  .app-footer { padding: 0.85rem 0.9rem; }
+
+  .chart-box.h-400 { height: 320px; }
+  .chart-box.h-340 { height: 300px; }
+
+  /* Stepper goes vertical on narrow screens */
+  .stepper { flex-direction: column; gap: 0; }
+  .stepper-step {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    grid-template-areas: 'dot label';
+    column-gap: 0.75rem;
+    text-align: left;
+    padding-bottom: 1rem;
+  }
+  .stepper-step::before {
+    top: 16px;
+    left: 15px;
+    width: 2px;
+    height: 100%;
+  }
+  .stepper-dot { grid-area: dot; margin: 0; }
+  .stepper-label { grid-area: label; align-self: center; }
+  .stepper-meta { grid-area: label; }
+  .stepper-step:last-child { padding-bottom: 0; }
+}
+
+/* ---------------------------------------------------------------------------
+   ≤ 767.98px — tables become cards, forms stack
+   ------------------------------------------------------------------------ */
+
+@media (max-width: 767.98px) {
+  body { font-size: 0.875rem; }
+
+  .page-title { font-size: 1.2rem; }
+  .stat-value { font-size: 1.5rem; }
+
+  .main-content { padding: 0.9rem 0.75rem; }
+  .card-body, .form-section { padding: 0.9rem; }
+  .card-header { padding: 0.75rem 0.9rem; min-height: 52px; }
+  .table-toolbar { padding: 0.75rem 0.9rem; }
+  .table-footer { padding: 0.7rem 0.9rem; flex-direction: column; align-items: stretch; }
+  .table-footer .pagination { justify-content: center; }
+  .bulk-bar { padding: 0.55rem 0.9rem; }
+
+  /* Toolbar stacks: search full width, filters scroll horizontally */
+  .table-toolbar { flex-direction: column; align-items: stretch; }
+  .table-toolbar .toolbar-search { max-width: none; flex: 1 1 auto; }
+  .toolbar-filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 3px; margin: 0 -0.15rem; }
+  .toolbar-filters > * { flex: 0 0 auto; }
+  .toolbar-spacer { display: none; }
+  .table-toolbar .btn-group, .table-toolbar .toolbar-end { width: 100%; }
+  .table-toolbar .toolbar-end { display: flex; gap: 0.4rem; }
+  .table-toolbar .toolbar-end > * { flex: 1 1 auto; }
+
+  /* Segmented controls scroll instead of wrapping awkwardly */
+  .segmented { max-width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+  .chart-toolbar { flex-direction: column; align-items: stretch; }
+  .chart-kpis { gap: 0.9rem; }
+  .chart-kpi-value { font-size: 0.95rem; }
+
+  /* ---- Mobile card tables ------------------------------------------------ */
+  /*
+     Opt-in via <table class="table-mobile-cards">. The table engine copies
+     each <th> label onto its cells as data-label so cards stay meaningful.
+  */
+  .table-mobile-cards > thead { display: none; }
+  .table-mobile-cards,
+  .table-mobile-cards > tbody,
+  .table-mobile-cards > tbody > tr,
+  .table-mobile-cards > tbody > tr > td { display: block; width: 100%; }
+
+  .table-mobile-cards > tbody > tr {
+    border: 1px solid var(--nc-border);
+    border-radius: var(--nc-radius);
+    background: var(--nc-surface);
+    margin: 0.6rem 0.75rem;
+    padding: 0.35rem 0.75rem;
+    box-shadow: var(--nc-shadow-xs);
+  }
+  .table-mobile-cards > tbody > tr:hover > td { background: transparent; }
+  .table-mobile-cards > tbody > tr > td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--nc-border-subtle);
+    text-align: right;
+  }
+  .table-mobile-cards > tbody > tr > td:last-child { border-bottom: 0; }
+  .table-mobile-cards > tbody > tr > td::before {
+    content: attr(data-label);
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.055em;
+    color: var(--nc-text-tertiary);
+    text-align: left;
+    flex: 0 0 auto;
+    max-width: 40%;
+  }
+  .table-mobile-cards > tbody > tr > td.table-check { display: flex; justify-content: flex-start; }
+  .table-mobile-cards > tbody > tr > td.table-check::before { content: none; }
+  .table-mobile-cards > tbody > tr > td.table-actions { text-align: right; justify-content: flex-end; }
+
+  /* Keep the entity cell readable: icon/text left-aligned, full width */
+  .table-mobile-cards > tbody > tr > td.has-entity,
+  .table-mobile-cards > tbody > tr > td[data-col='product'],
+  .table-mobile-cards > tbody > tr > td[data-col='customer'] {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 0.4rem;
+  }
+  .table-mobile-cards .cell-entity { width: 100%; }
+  .table-mobile-cards .cell-entity-title { max-width: 100%; white-space: normal; }
+
+  .sticky-col-first > thead th:first-child,
+  .sticky-col-first > tbody td:first-child { position: static; box-shadow: none; }
+
+  .table-scroll-y { max-height: none; overflow: visible; }
+
+  /* Product row metrics wrap under the title */
+  .product-row { flex-wrap: wrap; }
+  .product-row-metrics { width: 100%; justify-content: space-between; gap: 0.5rem; }
+  .product-row-metric { text-align: left; }
+  .table-mobile-cards .cell-entity-sub { max-width: 100%; white-space: normal; }
+
+  /* Notification rows: actions drop under the body */
+  .notify-row { flex-wrap: wrap; }
+  .notify-row-actions { width: 100%; justify-content: flex-end; margin-top: 0.25rem; }
+
+  .dl-detail > div { flex-direction: column; gap: 2px; align-items: flex-start; }
+  .dl-detail dd { text-align: left; }
+
+  .summary-row { gap: 0.5rem; }
+
+  .profile-hero { flex-direction: column; align-items: flex-start; text-align: left; }
+  .profile-hero-actions { margin-left: 0; width: 100%; }
+  .profile-hero-actions .btn { flex: 1 1 auto; justify-content: center; }
+
+  .setting-row { flex-direction: column; gap: 0.6rem; }
+  .setting-row-control { width: 100%; }
+  .setting-row-control .form-control,
+  .setting-row-control .form-select { width: 100%; }
+
+  .image-grid { grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); }
+
+  .modal-dialog { margin: 0.5rem; }
+  .modal-footer { flex-wrap: wrap; }
+  .modal-footer .btn { flex: 1 1 auto; }
+
+  .dropdown-menu-xl, .dropdown-menu-lg { min-width: min(20rem, calc(100vw - 1.5rem)); }
+
+  .toast-container { left: 0.5rem; right: 0.5rem; bottom: 0.5rem; padding: 0 !important; }
+  .toast-container .toast { width: 100%; }
+
+  .app-footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+
+/* ---------------------------------------------------------------------------
+   ≤ 575.98px — small phones
+   ------------------------------------------------------------------------ */
+
+@media (max-width: 575.98px) {
+  .main-content { padding: 0.75rem 0.6rem; }
+  .page-title { font-size: 1.1rem; }
+  .page-header-actions .btn span { display: inline; }
+
+  .topbar { padding: 0 0.6rem; height: 58px; }
+  :root { --nc-topbar-height: 58px; }
+  .topbar-start { gap: 0.2rem; }
+  .topbar-end { gap: 0.1rem; }
+  .btn-icon { width: 34px; height: 34px; }
+
+  .stat-card { padding: 0.85rem; }
+  .stat-value { font-size: 1.35rem; }
+  .stat-icon { width: 32px; height: 32px; font-size: 0.85rem; }
+
+  .info-card { padding: 0.7rem 0.75rem; gap: 0.6rem; }
+  .info-card-icon { width: 32px; height: 32px; font-size: 0.82rem; }
+  .info-card-value { font-size: 0.95rem; }
+  .info-card-lg .info-card-icon { width: 36px; height: 36px; font-size: 0.9rem; }
+  .info-card-lg .info-card-value { font-size: 1.15rem; }
+
+  .notify-row { padding: 0.75rem 0.7rem; gap: 0.65rem; }
+  .category-card-thumb { width: 56px; height: 44px; }
+
+  .chart-box.h-400, .chart-box.h-340, .chart-box.h-300, .chart-box.h-260 { height: 240px; }
+
+  .table-mobile-cards > tbody > tr { margin: 0.5rem 0.5rem; padding: 0.25rem 0.6rem; }
+
+  .pagination { gap: 2px; }
+  .page-link { min-width: 28px; padding: 0.28rem 0.5rem; font-size: 0.72rem; }
+
+  .avatar-xl { width: 68px; height: 68px; font-size: 1.3rem; }
+  .thumb-xl { width: 68px; height: 68px; }
+
+  .state { padding: 2rem 1rem; }
+  .state-icon { width: 52px; height: 52px; font-size: 1.2rem; }
+}
+
+/* ---------------------------------------------------------------------------
+   Large desktops (≥ 1600px): widen the content measure a touch
+   ------------------------------------------------------------------------ */
+
+@media (min-width: 1600px) {
+  :root { --nc-sidebar-width: 280px; }
+  .main-content { padding: 1.5rem 1.75rem; }
+  .page-title { font-size: 1.5rem; }
+  .stat-value { font-size: 1.75rem; }
+  .container-fluid-xl { max-width: 1680px; margin-inline: auto; }
+}
+
+/* ---------------------------------------------------------------------------
+   Landscape phones: keep the drawer from covering everything
+   ------------------------------------------------------------------------ */
+
+@media (max-width: 991.98px) and (orientation: landscape) and (max-height: 520px) {
+  .sidebar { --bs-offcanvas-width: 240px; width: 240px !important; }
+  .sidebar-body { padding: 0.5rem; }
+}
+
+/* ---------------------------------------------------------------------------
+   Touch devices: no hover-only affordances
+   ------------------------------------------------------------------------ */
+
+@media (hover: none) {
+  .stat-card:hover { transform: none; box-shadow: var(--nc-shadow-xs); }
+  .card-hover:hover { transform: none; box-shadow: var(--nc-shadow-xs); }
+  .image-tile-remove { opacity: 1; }
+  .sidebar-user-link { opacity: 1; }
+  html.sidebar-collapsed .nav-group:hover > .collapse { display: none !important; }
+}
+
+/* ---------------------------------------------------------------------------
+   Forced colors / high contrast
+   ------------------------------------------------------------------------ */
+
+@media (forced-colors: active) {
+  .stat-card, .card, .sidebar, .topbar { border: 1px solid CanvasText; }
+  .status-badge { border: 1px solid CanvasText; }
+}

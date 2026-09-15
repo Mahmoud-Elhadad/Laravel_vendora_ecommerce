@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="pg4h2v5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#30cfd0"/><stop offset="100%" stop-color="#5b86e5"/>
+    </linearGradient>
+    <radialGradient id="pg4h2v5g" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="pg4h2v5p" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#pg4h2v5)"/>
+  <rect width="600" height="600" fill="url(#pg4h2v5p)"/>
+  <rect width="600" height="600" fill="url(#pg4h2v5g)"/>
+  <circle cx="300" cy="264" r="180" fill="#fff" opacity="0.16"/>
+  <g transform="translate(196.5 160.5) scale(8.624999999999998)" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z"/><path d="M5 19 13 11"/></g>
+  <rect x="0" y="534" width="600" height="66" fill="#000" opacity="0.16"/>
+  <text x="300" y="554" fill="#fff" font-size="27" font-weight="600" text-anchor="middle" opacity="0.97">Organic Skincare Set</text>
+  
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340">
+  <defs>
+    <linearGradient id="bw7uqw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff758c"/><stop offset="100%" stop-color="#ff7eb3"/>
+    </linearGradient>
+    <radialGradient id="bw7uqwg" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="bw7uqwp" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="340" fill="url(#bw7uqw)"/>
+  <rect width="1200" height="340" fill="url(#bw7uqwp)"/>
+  <rect width="1200" height="340" fill="url(#bw7uqwg)"/>
+  
+  <circle cx="983.9999999999999" cy="170" r="142.79999999999998" fill="#fff" opacity="0.10"/>
+  <circle cx="983.9999999999999" cy="170" r="102" fill="#fff" opacity="0.12"/>
+  <circle cx="120" cy="289" r="74.8" fill="#fff" opacity="0.08"/>
+  <g transform="translate(898.9999999999999 85) scale(7.083333333333333)" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M3.5 11.5V4h7.5l9 9-7.5 7.5z"/><circle cx="7.5" cy="7.5" r="1.3"/></g>
+</svg>

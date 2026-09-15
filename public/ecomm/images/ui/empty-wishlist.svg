@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="300" viewBox="0 0 420 300" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="eyuoy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f093fb"/><stop offset="100%" stop-color="#f5576c"/>
+    </linearGradient>
+    <radialGradient id="eyuoyg" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="eyuoyp" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <circle cx="210" cy="120" r="86" fill="url(#eyuoy)" opacity="0.14"/>
+  <circle cx="210" cy="120" r="62" fill="url(#eyuoy)" opacity="0.20"/>
+  <g transform="translate(173 83) scale(3.0833333333333335)" fill="none" stroke="#f5576c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M12 20s-7.5-4.6-9.3-9A5 5 0 0 1 12 6.6 5 5 0 0 1 21.3 11c-1.8 4.4-9.3 9-9.3 9z"/></g>
+  <text x="210" y="240" fill="#3a3f4b" font-size="20" font-weight="700" text-anchor="middle">Your wishlist is empty</text>
+  <text x="210" y="266" fill="#8a90a0" font-size="14" text-anchor="middle">Tap the heart on products you love</text>
+</svg>

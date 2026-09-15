@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="190" height="46" viewBox="0 0 190 46" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#667eea"/><stop offset="100%" stop-color="#764ba2"/></linearGradient></defs>
+  <rect x="2" y="7" width="32" height="32" rx="9" fill="url(#lg1)"/>
+  <g transform="translate(7 12) scale(0.9166666666666666)" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><circle cx="9.5" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3.5h2.6l2.6 12.2h11l2-8.2H6"/></g>
+  <text x="44" y="31" fill="#1f2430" font-size="24" font-weight="800" letter-spacing="-0.5">Vendora</text>
+</svg>

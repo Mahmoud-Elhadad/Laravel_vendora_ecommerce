@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="pg3wa0d" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff758c"/><stop offset="100%" stop-color="#ff7eb3"/>
+    </linearGradient>
+    <radialGradient id="pg3wa0dg" cx="30%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="pg3wa0dp" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#fff" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#pg3wa0d)"/>
+  <rect width="600" height="600" fill="url(#pg3wa0dp)"/>
+  <rect width="600" height="600" fill="url(#pg3wa0dg)"/>
+  <circle cx="300" cy="264" r="180" fill="#fff" opacity="0.16"/>
+  <g transform="translate(196.5 160.5) scale(8.624999999999998)" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M10 3h4v3.2l1.8 3v11a1.2 1.2 0 0 1-1.2 1.2H9.4A1.2 1.2 0 0 1 8.2 19.2v-11L10 6.2z"/><path d="M8.2 11h7.6"/></g>
+  <rect x="0" y="534" width="600" height="66" fill="#000" opacity="0.16"/>
+  <text x="300" y="554" fill="#fff" font-size="27" font-weight="600" text-anchor="middle" opacity="0.97">Hydrating Face Serum</text>
+  
+</svg>
