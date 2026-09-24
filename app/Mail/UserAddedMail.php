@@ -17,9 +17,10 @@ class UserAddedMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $user;
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -38,7 +39,7 @@ class UserAddedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'Ecommerce.emails.MessageAddUserMail',
         );
     }
 
