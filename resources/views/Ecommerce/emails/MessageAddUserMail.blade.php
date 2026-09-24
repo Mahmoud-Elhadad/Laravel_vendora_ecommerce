@@ -36,8 +36,29 @@
                     </tr>
 
                     <!-- Content -->
+
                     <tr>
                         <td style="padding:40px 35px; color:#374151;">
+
+                            <!-- User Image -->
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td align="center" style="padding-bottom:25px;">
+
+                                        <img src="{{ $message->embed(storage_path('app/public/images/clients/' . $user->image)) }}"
+                                            alt="{{ $user->name }}"
+                                            width="100"
+                                            height="100"
+                                            style="display:block;
+                                                    width:100px;
+                                                    height:100px;
+                                                    object-fit:cover;
+                                                    border-radius:50%;
+                                                    border:4px solid #f3f4f6;">
+
+                                    </td>
+                                </tr>
+                            </table>
 
                             <h2 style="margin:0 0 20px; font-size:22px; color:#111827;">
                                 Hello {{ $user['name'] }} 👋
@@ -53,7 +74,7 @@
                                 everything our platform has to offer.
                             </p>
 
-                            
+
 
                             <p style="margin:30px 0 0; font-size:14px; line-height:1.6; color:#6b7280;">
                                 If you did not create this account, you can safely ignore
