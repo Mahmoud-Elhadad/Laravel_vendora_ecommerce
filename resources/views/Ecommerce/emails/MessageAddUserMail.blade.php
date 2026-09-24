@@ -40,7 +40,7 @@
                         <td style="padding:40px 35px; color:#374151;">
 
                             <h2 style="margin:0 0 20px; font-size:22px; color:#111827;">
-                                Hello {{ $user->name }} 👋
+                                Hello {{ $user['name'] }} 👋
                             </h2>
 
                             <p style="margin:0 0 15px; font-size:15px; line-height:1.7;">
