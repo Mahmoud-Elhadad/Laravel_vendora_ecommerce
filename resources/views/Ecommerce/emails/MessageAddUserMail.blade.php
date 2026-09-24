@@ -53,25 +53,7 @@
                                 everything our platform has to offer.
                             </p>
 
-                            <!-- Button -->
-                            <table cellpadding="0" cellspacing="0" border="0" align="center">
-                                <tr>
-                                    <td align="center"
-                                        style="background-color:#2563eb; border-radius:7px;">
-
-                                        <a href="{{ url('/login') }}"
-                                           style="display:inline-block;
-                                                  padding:13px 28px;
-                                                  color:#ffffff;
-                                                  text-decoration:none;
-                                                  font-size:15px;
-                                                  font-weight:bold;">
-                                            Login to Your Account
-                                        </a>
-
-                                    </td>
-                                </tr>
-                            </table>
+                            
 
                             <p style="margin:30px 0 0; font-size:14px; line-height:1.6; color:#6b7280;">
                                 If you did not create this account, you can safely ignore
