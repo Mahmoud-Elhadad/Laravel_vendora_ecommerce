@@ -29,7 +29,7 @@ class UserAddedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: "welcome" .  $this->user['name'],
+            subject: "welcome " .  $this->user['name'],
         );
     }
 
