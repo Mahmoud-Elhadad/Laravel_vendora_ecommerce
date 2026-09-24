@@ -45,8 +45,8 @@
                                 <tr>
                                     <td align="center" style="padding-bottom:25px;">
 
-                                        <img src="{{ $message->embed(storage_path('app/public/images/clients/' . $user->image)) }}"
-                                            alt="{{ $user->name }}"
+                                        <img src="{{ $message->embed(storage_path('app/public/images/clients/' . $user['image'])) }}"
+                                            alt="{{ $user['name'] }}"
                                             width="100"
                                             height="100"
                                             style="display:block;
