@@ -23,6 +23,6 @@ class SendMailOnUserRegistered
      */
     public function handle(UserRegistered $event): void
     {
-        Mail::to($event->user->email)->send(new UserAddedMail($event->user));
+        Mail::to($event->user['email'])->send(new UserAddedMail($event->user));
     }
 }
