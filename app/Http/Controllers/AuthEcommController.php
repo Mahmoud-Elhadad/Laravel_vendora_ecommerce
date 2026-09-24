@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegistered;
 use App\Http\Requests\EcommAddUserRequest;
 use App\Models\EcommUser;
 use Illuminate\Http\Request;
@@ -39,6 +40,8 @@ class AuthEcommController extends Controller
             'phone' => $request->phone,
             'image' => $new_img_name,
         ]);
+        $user = ["image" => $new_img_name , "name" => $request->first_name , "email" => $request->email];
+        event(new UserRegistered($user));
 
         return view('Ecommerce.pages.login');
     }
