@@ -14,9 +14,10 @@ class RegisterClient extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    private $content;
+    public function __construct($content)
     {
-        //
+        $this->content = $content;
     }
 
     /**
@@ -26,7 +27,7 @@ class RegisterClient extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['mail' , "database"];
     }
 
     /**
@@ -48,7 +49,7 @@ class RegisterClient extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            "content" => $this->content
         ];
     }
 }
