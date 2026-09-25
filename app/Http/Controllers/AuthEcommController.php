@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Events\UserRegistered;
 use App\Http\Requests\EcommAddUserRequest;
+use App\Models\Admin;
 use App\Models\EcommUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 
 class AuthEcommController extends Controller
 {
@@ -41,7 +43,8 @@ class AuthEcommController extends Controller
             'image' => $new_img_name,
         ]);
         $user = ["image" => $new_img_name , "name" => $request->first_name , "email" => $request->email];
-        event(new UserRegistered($user));
+        $admins = Admin::select("id")->get();
+        event(new UserRegistered($user , $admins));
 
         return view('Ecommerce.pages.login');
     }
