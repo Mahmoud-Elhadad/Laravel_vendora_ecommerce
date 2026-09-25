@@ -17,10 +17,11 @@ class UserRegistered
     /**
      * Create a new event instance.
      */
-    public $user;
-    public function __construct($user)
+    public $user , $admins;
+    public function __construct($user , $admins)
     {
         $this->user = $user;
+        $this->admins = $admins;
     }
 
     /**
