@@ -44,7 +44,8 @@ class AuthEcommController extends Controller
         ]);
         $user = ["image" => $new_img_name , "name" => $request->first_name , "email" => $request->email];
         $admins = Admin::select("id")->get();
-        event(new UserRegistered($user , $admins));
+        $content = "A new client has registered successfully with name " . $request->first_name;
+        event(new UserRegistered($user , $admins , $content));
 
         return view('Ecommerce.pages.login');
     }
