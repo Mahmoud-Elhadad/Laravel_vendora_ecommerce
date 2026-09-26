@@ -24,5 +24,11 @@ class GateServiceProvider extends ServiceProvider
         Gate::define("delete-access" , function(Admin $admin){
             return $admin->role === "super admin";
         });
+
+        Gate::define("update-access" , function(Admin $admin){
+            return $admin->role === "super admin" || $admin->role === "admin";
+        });
+
+
     }
 }
