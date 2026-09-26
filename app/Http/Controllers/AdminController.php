@@ -126,7 +126,7 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        Gate::authorize("delete-access");
+        Gate::forUser(auth("dashboard")->user())->authorize("delete-access");
 
         if (file_exists(storage_path("app/public/images/admins/$admin->img"))) {
             unlink(storage_path("app/public/images/admins/$admin->img"));
