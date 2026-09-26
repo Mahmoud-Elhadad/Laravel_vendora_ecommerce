@@ -23,11 +23,13 @@ Route::middleware(AuthAdminMiddleware::class)->group(function () {
 
         $all_cats = Cat::count();
 
-        return view('Dashboard.pages.index', compact('num_all', 'eight_products' , "all_clients" , "all_cats"));
+        return view('Dashboard.pages.index', compact('num_all', 'eight_products', 'all_clients', 'all_cats'));
     })->name('vendora.index');
 
     // Route for adminController
     Route::resource('admin', AdminController::class);
+    Route::get('notify', [AdminController::class, 'notification'])->name('admin.notify');
+    Route::post('notify/{id}/read', [AdminController::class, 'read_notify'])->name('admin.notify.read');
 
     // Route for catController
     Route::resource('cat', CatController::class);
@@ -51,8 +53,8 @@ Route::middleware(AuthAdminMiddleware::class)->group(function () {
     // Route for delete message
     Route::delete('deleteMs/{id}', [MessageController::class, 'delete_message'])->name('delete.message');
 
-    //Route for customer controller
-    Route::resource("customer" , CustomerController::class);
+    // Route for customer controller
+    Route::resource('customer', CustomerController::class);
 
 });
 
