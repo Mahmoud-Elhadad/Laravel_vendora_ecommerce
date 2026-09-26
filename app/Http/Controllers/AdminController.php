@@ -54,9 +54,22 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Admin $admin)
+    public function notification()
     {
-        //
+
+        $notifications = auth('dashboard')->user()->notifications;
+        $num_all = auth('dashboard')->user()->notifications->count();
+        $num_unread = auth('dashboard')->user()->unreadNotifications->count();
+
+        return view('Dashboard.pages.notification', compact('notifications', 'num_unread' , "num_all"));
+    }
+
+    public function read_notify(string $id)
+    {
+        $notification = auth('dashboard')->user()->notifications()->findOrFail($id);
+        $notification->markAsRead();
+
+        return to_route('admin.notify');
     }
 
     /**
