@@ -26,11 +26,13 @@
             </nav>
                     <h1 class="page-title">Staff & Permissions</h1>
                 </div>
-                @if(Auth::guard("dashboard")->user()->role == "super admin")
+                @if(auth("dashboard")->user()->can("delete-access"))
+
                     <div class="page-header-actions">
                         <a href="{{ route("admin.create") }}" class="btn btn-primary" ><i class="fa-solid fa-user-plus me-2"></i>Add Staff</a>
                     </div>
                 @endif
+
                 </div>
 
                 <!-- ================================================================
@@ -73,12 +75,17 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Location</th>
                                     <th scope="col">Age</th>
-                                     @if(Auth::guard("dashboard")->user()->role == "super admin")
+                                     @if(auth("dashboard")->user()->can("update-access"))
 
-                                        <th scope="col">Edit</th>
+                                     <th scope="col">Edit</th>
+                                    @endif
+                                     @if(auth("dashboard")->user()->can("delete-access"))
+
                                         <th class="table-actions" scope="col">Delete</th>
-
                                      @endif
+
+
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,11 +101,14 @@
                                         <td data-label="age" data-sort-value="{{ $admin->age }}">{{ $admin->age }}</td>
 
 
-                                        @if(Auth::guard("dashboard")->user()->role == "super admin")
 
+                                        @if(auth("dashboard")->user()->can("update-access"))
                                             <td>
-                                             <a href="{{ route("admin.edit" , $admin->id) }}" class="btn btn-primary">Edit</a>
+                                            <a href="{{ route("admin.edit" , $admin->id) }}" class="btn btn-primary">Edit</a>
                                             </td>
+                                        @endif
+
+                                        @if(auth("dashboard")->user()->can("delete-access"))
 
                                              <td>
                                                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAdminModal-{{ $admin->id }}">
