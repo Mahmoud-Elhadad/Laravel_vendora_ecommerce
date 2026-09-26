@@ -60,12 +60,12 @@
           <i class="fa-regular fa-comment-dots"></i>
         </a>
 
-        <a href="" class="btn btn-icon has-dot">
+        <a href="{{ route("admin.notify") }}" class="btn btn-icon has-dot">
             <i class="fa-regular fa-bell"></i>
         </a>
 
 
-       
+
 
       <div class="vr mx-1 d-none d-sm-block"></div>
 
