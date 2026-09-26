@@ -14,7 +14,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        Gate::authorize("show-dashboard");
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
 
         $admins = Admin::all();
 
@@ -26,7 +26,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        Gate::authorize("delete-access");
+        Gate::forUser(auth("dashboard")->user())->authorize("delete-access");
 
         return view('Dashboard.pages.admins.add');
     }
@@ -36,7 +36,7 @@ class AdminController extends Controller
      */
     public function store(AdminAddRequest $request)
     {
-        Gate::authorize("delete-access");
+        Gate::forUser(auth("dashboard")->user())->authorize("delete-access");
 
         $img_extension = $request->img->extension();
         $tmp_name = $_FILES['img']['tmp_name'];
@@ -84,8 +84,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        Gate::authorize("update-access");
-        
+        Gate::forUser(auth("dashboard")->user())->authorize("update-access");
         return view('Dashboard.pages.admins.edit', compact('admin'));
     }
 
@@ -94,7 +93,7 @@ class AdminController extends Controller
      */
     public function update(AdminUpdateRequest $request, Admin $admin)
     {
-        Gate::authorize("update-access");
+        Gate::forUser(auth("dashboard")->user())->authorize("update-access");
 
         if ($request->hasFile('img')) {
             if (file_exists(storage_path("app/public/images/admins/$admin->img"))) {
