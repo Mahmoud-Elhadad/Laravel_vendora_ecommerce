@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AdminAddRequest;
 use App\Http\Requests\AdminUpdateRequest;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Gate;
 
 class AdminController extends Controller
 {
@@ -13,6 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
+        Gate::authorize("show-dashboard");
+
         $admins = Admin::all();
 
         return view('Dashboard.pages.admins.view', compact('admins'));
@@ -23,6 +26,8 @@ class AdminController extends Controller
      */
     public function create()
     {
+        Gate::authorize("delete-access");
+
         return view('Dashboard.pages.admins.add');
     }
 
@@ -31,6 +36,8 @@ class AdminController extends Controller
      */
     public function store(AdminAddRequest $request)
     {
+        Gate::authorize("delete-access");
+
         $img_extension = $request->img->extension();
         $tmp_name = $_FILES['img']['tmp_name'];
         $new_img_name = md5(uniqid()).'.'.$img_extension;
@@ -77,7 +84,8 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-
+        Gate::authorize("update-access");
+        
         return view('Dashboard.pages.admins.edit', compact('admin'));
     }
 
@@ -86,6 +94,8 @@ class AdminController extends Controller
      */
     public function update(AdminUpdateRequest $request, Admin $admin)
     {
+        Gate::authorize("update-access");
+
         if ($request->hasFile('img')) {
             if (file_exists(storage_path("app/public/images/admins/$admin->img"))) {
                 unlink(storage_path("app/public/images/admins/$admin->img"));
@@ -117,6 +127,8 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
+        Gate::authorize("delete-access");
+
         if (file_exists(storage_path("app/public/images/admins/$admin->img"))) {
             unlink(storage_path("app/public/images/admins/$admin->img"));
         }
