@@ -29,6 +29,10 @@ class GateServiceProvider extends ServiceProvider
             return $admin->role === "super admin" || $admin->role === "admin";
         });
 
+        Gate::define("show-dashboard" , function(Admin $admin){
+            return in_array($admin->role , ["super admin" , "admin" , "manager" , "sales" , "support"]);
+        });
+
 
     }
 }
