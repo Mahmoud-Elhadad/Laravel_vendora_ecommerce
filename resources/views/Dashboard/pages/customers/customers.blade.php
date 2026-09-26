@@ -120,7 +120,7 @@
                             <th class="sortable" data-sort="carts" scope="col">Carts</th>
                             <th class="sortable" data-sort="wishlists" scope="col">Wishlists</th>
                             <th class="sortable" data-sort="spent" scope="col">Spent</th>
-                            @if(Auth::guard("dashboard")->user()->role == "super admin")
+                            @if(auth("dashboard")->user()->can("update-access"))
 
                                 <th class="table-actions" scope="col"><span class="visually-hidden">Actions</span></th>
 
@@ -149,7 +149,7 @@
                                     <td data-label="Carts" class="cell-primary" data-sort-value="{{ $customer->carts_count }}">{{ $customer->carts_count }}</td>
                                     <td data-label="Wishlists" class="cell-primary" data-sort-value="{{ $customer->wishlists_count }}">{{ $customer->wishlists_count }}</td>
                                     <td data-label="Spent" class="cell-primary" data-sort-value="{{ $customer->total_spent }}" data-export-value="{{ $customer->total_spent }}">${{ number_format($customer->total_spent, 2) }}</td>
-                                    @if(Auth::guard("dashboard")->user()->role == "super admin")
+                                    @if(auth("dashboard")->user()->can("update-access"))
 
                                         <td class="table-actions">
 

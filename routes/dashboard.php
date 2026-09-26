@@ -10,11 +10,14 @@ use App\Http\Middleware\AuthAdminMiddleware;
 use App\Models\Cat;
 use App\Models\EcommUser;
 use App\Models\Product;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(AuthAdminMiddleware::class)->group(function () {
 
     Route::get('index', function () {
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        
         $num_all = Product::count();
 
         $eight_products = Product::latest()->with('cat', 'image')->take(8)->get();
