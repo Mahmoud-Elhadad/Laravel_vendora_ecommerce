@@ -75,7 +75,7 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Location</th>
                                     <th scope="col">Age</th>
-                                     @if(auth("dashboard")->user()->can("update-access"))
+                                     @if(auth("dashboard")->user()->can("edit-access"))
 
                                      <th scope="col">Edit</th>
                                     @endif
@@ -102,10 +102,14 @@
 
 
 
-                                        @if(auth("dashboard")->user()->can("update-access"))
+                                        @if(auth("dashboard")->user()->can("update-access" , $admin))
                                             <td>
                                             <a href="{{ route("admin.edit" , $admin->id) }}" class="btn btn-primary">Edit</a>
                                             </td>
+                                        @else
+
+                                        <td>action authorized</td>
+
                                         @endif
 
                                         @if(auth("dashboard")->user()->can("delete-access"))
