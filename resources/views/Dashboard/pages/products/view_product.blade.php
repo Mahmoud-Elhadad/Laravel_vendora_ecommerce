@@ -16,10 +16,13 @@
       </nav>
             <h1 class="page-title">Products</h1>
           </div>
-          <div class="page-header-actions">
-            <button class="btn btn-subtle" type="button" data-export="products"><i class="fa-solid fa-file-csv me-2"></i>Export CSV</button>
-            <a class="btn btn-primary" href="{{ route("product.create")}}"><i class="fa-solid fa-plus me-2"></i>Add Product</a>
-          </div>
+          @if(auth("dashboard")->user()->can("create" , Product::class))
+
+            <div class="page-header-actions">
+                <button class="btn btn-subtle" type="button" data-export="products"><i class="fa-solid fa-file-csv me-2"></i>Export CSV</button>
+                <a class="btn btn-primary" href="{{ route("product.create")}}"><i class="fa-solid fa-plus me-2"></i>Add Product</a>
+            </div>
+          @endif
         </div>
 
 
@@ -130,10 +133,12 @@
                     <td class="table-actions"><div class="btn-actions"><a class="btn-action" href="{{ route("product.edit" , $product->id) }}" data-bs-toggle="tooltip" title="View"><i class="fa-regular fa-eye"></i><span class="visually-hidden">View</span></a><a class="btn-action" href="{{ route("product.edit" , $product->id) }}" data-bs-toggle="tooltip" title="Edit"><i class="fa-regular fa-pen-to-square"></i><span class="visually-hidden">Edit</span></a>
 
 
+                        @if(auth("dashboard")->user()->can("create" , Product::class))
 
                             <button type="button" class="btn-action danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal-{{ $product->id }}"><i class="fa-regular fa-trash-can"></i><span class="visually-hidden">Delete</span>
                             </button>
-                       
+                        @endif
+
                     </div>
 
                 </td>
