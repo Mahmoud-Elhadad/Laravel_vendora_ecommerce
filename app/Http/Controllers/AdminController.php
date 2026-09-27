@@ -84,7 +84,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("update-access");
+        Gate::forUser(auth("dashboard")->user())->authorize("update-access" , $admin);
         return view('Dashboard.pages.admins.edit', compact('admin'));
     }
 
@@ -93,7 +93,7 @@ class AdminController extends Controller
      */
     public function update(AdminUpdateRequest $request, Admin $admin)
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("update-access");
+        Gate::forUser(auth("dashboard")->user())->authorize("update-access" , $admin);
 
         if ($request->hasFile('img')) {
             if (file_exists(storage_path("app/public/images/admins/$admin->img"))) {
