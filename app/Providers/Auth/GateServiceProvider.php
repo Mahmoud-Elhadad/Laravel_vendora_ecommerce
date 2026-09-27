@@ -25,9 +25,13 @@ class GateServiceProvider extends ServiceProvider
             return $admin->role === "super admin";
         });
 
+        Gate::define("edit-access" , function(Admin $admin){
+            return $admin->role === "super admin" || $admin->role === "admin";
+        });
+
         Gate::define("update-access" , function(Admin $admin , Admin $targetUser){
             if($targetUser->role === "super admin") return $admin->role === "super admin";
-            
+
             return $admin->role === "super admin" || $admin->role === "admin";
         });
 
