@@ -30,7 +30,7 @@ class EcommController extends Controller
 
     public function product_details(int $id)
     {
-        $product = Product::with('image', 'cat')->find($id);
+        $product = Product::with('image', 'cat')->findOrFail($id);
         $relatedProducts = Product::where('cat_id', $product->cat_id)
             ->where('id', '!=', $id)->with('image', 'cat')
             ->get();
@@ -44,7 +44,7 @@ class EcommController extends Controller
 
     public function quick_view(string $id)
     {
-        $product = Product::with('image', 'cat')->find((int) $id);
+        $product = Product::with('image', 'cat')->findOrFail((int) $id);
 
         if (! $product) {
             return response()->json(['error' => 'Product not found'], 404);
@@ -82,7 +82,7 @@ class EcommController extends Controller
         $product_id = $request->product_id;
         $count = max(1, (int) $request->count);
 
-        $product = Product::find($product_id);
+        $product = Product::findOrFai($product_id);
 
         if (! $product) {
             return response()->json(['status' => 'error', 'message' => 'Product not found.'], 404);
@@ -140,10 +140,10 @@ class EcommController extends Controller
     public function remove_item_cart(Request $request)
     {
         $cart_id = $request->cart_id;
-        $cart = Cart::find($cart_id);
+        $cart = Cart::findOrFai($cart_id);
 
         if ($cart) {
-            $product = Product::find($cart->product_id);
+            $product = Product::findOrFai($cart->product_id);
             if ($product) {
                 $product->decrement('sold_quantity', $cart->count);
                 $product->increment('count', $cart->count);
@@ -159,7 +159,7 @@ class EcommController extends Controller
 
         if ($cart_products) {
             foreach ($cart_products as $cart) {
-                $product = Product::find($cart->product_id);
+                $product = Product::findOrFai($cart->product_id);
                 if ($product) {
                     $product->decrement('sold_quantity', $cart->count);
                     $product->increment('count', $cart->count);
@@ -178,7 +178,7 @@ class EcommController extends Controller
 
         $all_user_carts = Cart::where('user_id', $user_id)->get();
         foreach ($all_user_carts as $cart) {
-            $product = Product::find($cart->product_id);
+            $product = Product::findOrFai($cart->product_id);
             if ($product) {
                 $subTotal += $product->price * $cart->count;
             }
@@ -192,7 +192,7 @@ class EcommController extends Controller
     public function show_profile_and_edit_page()
     {
         $user_id = Auth::guard('ecomm')->user()->id;
-        $client = EcommUser::find($user_id);
+        $client = EcommUser::findOrFai($user_id);
 
         return view('Ecommerce.pages.editProfile', compact('client'));
     }
@@ -202,7 +202,7 @@ class EcommController extends Controller
         $user_id = Auth::guard('ecomm')->user()->id;
 
         if ($request->hasFile('image')) {
-            $client = EcommUser::find($user_id);
+            $client = EcommUser::findOrFai($user_id);
             if ($client->image !== 'user-1.png') {
                 unlink(storage_path('app/public/images/clients/'.$client->image)); // remove old image
             }
@@ -239,7 +239,7 @@ class EcommController extends Controller
     {
         $user_id = Auth::guard('ecomm')->user()->id;
 
-        $product = Product::find($request->product_id);
+        $product = Product::findOrFai($request->product_id);
         $productName = $product ? $product->name : 'Item';
 
         $whilist_first = Whilist::where('user_id', $user_id)->where('product_id', $request->product_id)->first();
