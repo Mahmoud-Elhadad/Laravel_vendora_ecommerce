@@ -7,6 +7,7 @@ use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Cat;
 use App\Models\Image;
 use App\Models\Product;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -28,6 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        Gate::forUser(auth("dashboard")->user())->authorize("create" , Product::class);
         $cats = Cat::all();
 
         return view('Dashboard.pages.products.add_product', compact('cats'));
@@ -38,6 +40,8 @@ class ProductController extends Controller
      */
     public function store(ProductAddRequest $request)
     {
+         Gate::forUser(auth("dashboard")->user())->authorize("create" , Product::class);
+
         $product = Product::create($request->except('_token', '_img'));
         Image::saveImg($product->id);
 
@@ -64,6 +68,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+         Gate::forUser(auth("dashboard")->user())->authorize("update" , $product);
+
         $single_product = Product::where('id', $product->id)->with('image', 'cat')->get();
         $cats = Cat::all();
 
@@ -75,6 +81,7 @@ class ProductController extends Controller
      */
     public function update(ProductUpdateRequest $request, Product $product)
     {
+         Gate::forUser(auth("dashboard")->user())->authorize("create" , $product);
         if ($request->hasFile('img')) {
 
             $data = Product::where('id', $product->id)->update($request->except('_token', '_method', 'img'));
@@ -93,6 +100,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
 
+     Gate::forUser(auth("dashboard")->user())->authorize("forceDelete" , $product);
         $num_products_cat = Cat::where('id', $product->cat_id)->get('num_products');
         $count = $num_products_cat[0]->num_products;
         $count--;
