@@ -115,9 +115,9 @@
               <li class="nav-subitem"><a class="nav-link {{ Request::routeIs('admin.notify') || Request::routeIs('admin.edit') ? 'active' : '' }}" href="{{ route("admin.notify") }}" title="Staff">
             <span class="nav-icon"><i class="fa-solid fa-users-gear"></i></span>
             <span class="nav-text">Notification</span>
-            @if($unreed_ms)
+            @if($unreed_notify)
 
-                <span class="nav-badge badge rounded-pill bg-danger-subtle text-danger-emphasis unseen_ms" data-nav-badge="messages">{{ $unreed_ms }}</span>
+                <span class="nav-badge badge rounded-pill bg-danger-subtle text-danger-emphasis unseen_ms" data-nav-badge="messages">{{ $unreed_notify }}</span>
             @endif
 
           </a></li>
