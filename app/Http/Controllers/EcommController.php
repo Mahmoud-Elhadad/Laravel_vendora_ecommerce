@@ -11,19 +11,36 @@ use App\Models\UserMessage;
 use App\Models\Whilist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class EcommController extends Controller
 {
     public function display_home()
     {
-        $products = Product::latest()->with('image', 'cat')->get();
-        $best_products_sold = Product::orderByDesc('sold_quantity')->with('cat', 'image')->take(8)->get();
+
+        $products = Cache::get("products.latest");
+        if($products === null){
+            $products = Product::latest()->with('image', 'cat')->get();
+            Cache::put("products.latest" , $products , 3600);
+        }
+
+
+        $best_products_sold  = Cache::get("best_products_sold");
+        if($best_products_sold === null){
+            $best_products_sold = Product::orderByDesc('sold_quantity')->with('cat', 'image')->take(8)->get();
+            Cache::put("best_products_sold" , $best_products_sold , 3600);
+        }
 
         $wishlistedIds = Auth::guard('ecomm')->check()
             ? Whilist::where('user_id', Auth::guard('ecomm')->id())->pluck('product_id')->toArray()
             : [];
 
-        $all_categories = Cat::where("num_products" , ">" , 0)->get();
+        $all_categories = Cache::memo()->get("all_categories");
+        if($all_categories === null){
+            $all_categories = Cat::where("num_products" , ">" , 0)->get();
+            Cache::memo()->put("all_categories" , $all_categories , 3600);
+
+        }
 
         return view('Ecommerce.pages.index', compact('products', 'wishlistedIds', 'best_products_sold', 'all_categories'));
     }
