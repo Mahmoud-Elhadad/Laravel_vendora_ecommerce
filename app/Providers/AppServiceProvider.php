@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('unreed_ms', $unreed_ms);
         });
 
+        View::composer('Dashboard.layout.sidebar', function ($view) {
+            $unreed_notify = auth("dashboard")->user()->unreadNotifications()->count() ?? 0 ;
+            $view->with('unreed_notify', $unreed_notify);
+        });
+
         View::composer('components.navbar', function ($view) {
             $view->with('navbar_categories', Cat::orderBy('name')->get());
         });
