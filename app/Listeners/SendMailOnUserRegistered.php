@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Mail;
 
 class SendMailOnUserRegistered implements ShouldQueue
 {
+
+    use InteractsWithQueue;
+    
+    public $tries = 3;
+    public $backoff = 15;
     /**
      * Create the event listener.
      */
