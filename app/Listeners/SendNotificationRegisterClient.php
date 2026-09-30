@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Notification;
 
 class SendNotificationRegisterClient implements ShouldQueue
 {
+
+    use InteractsWithQueue;
+
+    public $tries = 3;
+    public $backoff = 15;
     /**
      * Create the event listener.
      */
