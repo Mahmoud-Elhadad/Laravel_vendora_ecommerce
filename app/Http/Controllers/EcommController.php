@@ -239,7 +239,7 @@ class EcommController extends Controller
     {
         $user_id = Auth::guard('ecomm')->user()->id;
 
-        $product = Product::findOrFai($request->product_id);
+        $product = Product::findOrFail($request->product_id);
         $productName = $product ? $product->name : 'Item';
 
         $whilist_first = Whilist::where('user_id', $user_id)->where('product_id', $request->product_id)->first();
