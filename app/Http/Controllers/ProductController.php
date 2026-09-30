@@ -7,6 +7,7 @@ use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Cat;
 use App\Models\Image;
 use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
@@ -52,6 +53,9 @@ class ProductController extends Controller
             'num_products' => $count,
         ]);
 
+        Cache::forget("products.latest");
+        Cache::forget("best_products_sold");
+        Cache::forget("all_categories");
         return to_route('product.index');
     }
 
@@ -91,6 +95,9 @@ class ProductController extends Controller
             Product::where('id', $product->id)->update($request->except('_token', '_method'));
         }
 
+        Cache::forget("products.latest");
+        Cache::forget("best_products_sold");
+        Cache::forget("all_categories");
         return to_route('product.index');
     }
 
@@ -111,6 +118,9 @@ class ProductController extends Controller
         Image::deleteImg($product->id);
         Product::where('id', $product->id)->delete();
 
+        Cache::forget("products.latest");
+        Cache::forget("best_products_sold");
+        Cache::forget("all_categories");
         return to_route('product.index');
     }
 }
