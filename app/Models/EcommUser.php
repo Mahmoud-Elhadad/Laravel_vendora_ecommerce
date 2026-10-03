@@ -32,6 +32,6 @@ class EcommUser extends Authenticatable
     }
 
     public function merchent(){
-        return $this->hasOne(Merchent::class);
+        return $this->hasOne(Merchent::class , "user_id" , "id");
     }
 }
