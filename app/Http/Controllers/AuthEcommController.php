@@ -25,6 +25,7 @@ class AuthEcommController extends Controller
 
     public function store_ecommUser(EcommAddUserRequest $request)
     {
+        return $request->role;
         $new_img_name = '';
         if ($request->hasFile('img')) {
             $img_extension = $request->img->extension();

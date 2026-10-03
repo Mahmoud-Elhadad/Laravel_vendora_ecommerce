@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class EcommUser extends Authenticatable
 {
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'phone', 'password', 'image',
+        'first_name', 'last_name', 'email', 'phone', 'password', 'image', "role"
     ];
 
     protected $hidden = [
