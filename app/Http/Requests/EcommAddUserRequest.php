@@ -28,6 +28,7 @@ class EcommAddUserRequest extends FormRequest
             'email' => 'required|email|unique:ecomm_users,email',
             'password' => 'required|string|min:6|same:confirm',
             'phone' => 'required|regex:/^01[0125][0-9]{8}$/|unique:ecomm_users,phone',
+            'role' => "required|in:customer,merchent" ,
             'img' => 'image',
         ];
     }
