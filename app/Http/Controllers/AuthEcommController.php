@@ -40,6 +40,7 @@ class AuthEcommController extends Controller
             'email' => $request->email,
             'password' => $request->password,
             'phone' => $request->phone,
+            'role' => $request->role ,
             'image' => $new_img_name,
         ]);
         $user = ["image" => $new_img_name , "name" => $request->first_name , "email" => $request->email];
