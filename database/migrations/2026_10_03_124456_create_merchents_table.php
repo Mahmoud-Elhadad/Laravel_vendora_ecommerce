@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //approved_at rejected_at rejection_reaso
         Schema::create('merchents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id")->constrained("ecomm_users")->onDelete("cascade")->onUpdate("cascade");
+            $table->enum("status" , ["pending" , "approved" , "rejected"])->default("pending");
+            $table->timestamp("approved_at")->nullable();
+            $table->timestamp("rejected_at")->nullable();
+            $table->text("rejected_reason")->nullable();
             $table->timestamps();
         });
     }
