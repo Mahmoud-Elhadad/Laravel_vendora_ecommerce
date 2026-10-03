@@ -32,7 +32,7 @@
                                 <p class="alert alert-danger">{{ $message }}</p>
                                 @enderror
                                 <label class="form-label" for="signup-first">First name</label>
-                                <input type="text" class="form-control" id="signup-first" name="first_name" placeholder="first name">
+                                <input type="text" class="form-control" id="signup-first" value="{{ old('first_name') }}" name="first_name" placeholder="first name">
 
                             </div>
                             <div class="col-md-6 mb-3">
@@ -40,7 +40,7 @@
                                 <p class="alert alert-danger">{{ $message }}</p>
                                 @enderror
                                     <label class="form-label" for="signup-last">Last name</label>
-                                    <input type="text" class="form-control" id="signup-last" name="last_name" placeholder="last name">
+                                    <input type="text" class="form-control" id="signup-last" value="{{ old('last_name') }}" name="last_name" placeholder="last name">
 
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                 <p class="alert alert-danger">{{ $message }}</p>
                                 @enderror
                                 <label class="form-label" for="signup-email">Email address</label>
-                                <input type="email" class="form-control" id="signup-email" name="email" placeholder="you@example.com">
+                                <input type="email" class="form-control" id="signup-email" value="{{ old('email') }}" name="email" placeholder="you@example.com">
 
                         </div>
                         <div class="row">
@@ -59,7 +59,7 @@
                                     <p class="alert alert-danger">{{ $message }}</p>
                                     @enderror
                                     <label class="form-label" for="signup-phone">Phone number </label>
-                                    <input type="tel" class="form-control" id="signup-phone" name="phone" placeholder="phone number">
+                                    <input type="tel" class="form-control" id="signup-phone" value="{{ old('phone') }}" name="phone" placeholder="phone number">
 
                             </div>
                             <div class="col-6 mb-3">
@@ -68,8 +68,8 @@
                                     @enderror
                                     <label class="form-label" for="signup-role">Role</label>
                                     <select name="role" id="signup-role" class="form-select">
-                                        <option value="customer">Customer</option>
-                                        <option value="merchent">Merchant</option>
+                                        <option @selected(old('role') === 'customer') value="customer">Customer</option>
+                                        <option @selected(old('role') === 'merchent') value="merchent">Merchant</option>
                                     </select>
 
                             </div>
@@ -86,7 +86,7 @@
                                 @enderror
                                 <label class="form-label" for="signup-password">Password</label>
                                 <div class="password-field">
-                                    <input type="password" class="form-control" id="signup-password" name="password" placeholder="••••••••">
+                                    <input type="password" class="form-control" id="signup-password"name="password" placeholder="••••••••">
 
 
                                 </div>
