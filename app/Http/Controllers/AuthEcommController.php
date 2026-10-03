@@ -6,6 +6,7 @@ use App\Events\UserRegistered;
 use App\Http\Requests\EcommAddUserRequest;
 use App\Models\Admin;
 use App\Models\EcommUser;
+use App\Models\Merchent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +35,7 @@ class AuthEcommController extends Controller
         } else {
             $new_img_name = 'user-1.png';
         }
-        EcommUser::create([
+        $this_user = EcommUser::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
@@ -43,6 +44,11 @@ class AuthEcommController extends Controller
             'role' => $request->role ,
             'image' => $new_img_name,
         ]);
+        if($request->role === "customer"){
+           Merchent::create([
+            "user_id" => $this_user->id
+           ]);
+        }
         $user = ["image" => $new_img_name , "name" => $request->first_name , "email" => $request->email];
         $admins = Admin::select("id")->get();
         $content = "A new client has registered successfully with name " . $request->first_name;
