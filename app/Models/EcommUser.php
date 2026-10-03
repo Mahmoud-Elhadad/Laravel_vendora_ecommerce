@@ -30,4 +30,8 @@ class EcommUser extends Authenticatable
     {
         return $this->hasMany(Whilist::class, 'user_id', 'id');
     }
+
+    public function merchent(){
+        return $this->hasOne(Merchent::class);
+    }
 }
