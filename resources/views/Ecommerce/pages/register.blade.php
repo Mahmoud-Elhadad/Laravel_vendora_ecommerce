@@ -54,23 +54,23 @@
                         </div>
                         <div class="row">
 
+                            @error("phone")
+                                <p class="alert alert-danger">{{ $message }}</p>
+                                @enderror
+                            @error("role")
+                                <p class="alert alert-danger">{{ $message }}</p>
+                                @enderror
                             <div class="col-6 mb-3">
-                                @error("phone")
-                                    <p class="alert alert-danger">{{ $message }}</p>
-                                    @enderror
-                                    <label class="form-label" for="signup-phone">Phone number </label>
-                                    <input type="tel" class="form-control" id="signup-phone" value="{{ old('phone') }}" name="phone" placeholder="phone number">
+                                <label class="form-label" for="signup-phone">Phone number </label>
+                                <input type="tel" class="form-control" id="signup-phone" value="{{ old('phone') }}" name="phone" placeholder="phone number">
 
                             </div>
                             <div class="col-6 mb-3">
-                                @error("role")
-                                    <p class="alert alert-danger">{{ $message }}</p>
-                                    @enderror
-                                    <label class="form-label" for="signup-role">Role</label>
-                                    <select name="role" id="signup-role" class="form-select">
-                                        <option @selected(old('role') === 'customer') value="customer">Customer</option>
-                                        <option @selected(old('role') === 'merchent') value="merchent">Merchant</option>
-                                    </select>
+                                <label class="form-label" for="signup-role">Role</label>
+                                <select name="role" id="signup-role" class="form-select">
+                                    <option @selected(old('role') === 'customer') value="customer">Customer</option>
+                                    <option @selected(old('role') === 'merchent') value="merchent">Merchant</option>
+                                </select>
 
                             </div>
                         </div>
