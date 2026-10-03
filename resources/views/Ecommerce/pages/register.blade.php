@@ -52,13 +52,27 @@
                                 <input type="email" class="form-control" id="signup-email" name="email" placeholder="you@example.com">
 
                         </div>
-                        <div class="col-12 mb-3">
-                            @error("phone")
-                                <p class="alert alert-danger">{{ $message }}</p>
-                                @enderror
-                                <label class="form-label" for="signup-phone">Phone number </label>
-                                <input type="tel" class="form-control" id="signup-phone" name="phone" placeholder="phone number">
+                        <div class="row">
 
+                            <div class="col-6 mb-3">
+                                @error("phone")
+                                    <p class="alert alert-danger">{{ $message }}</p>
+                                    @enderror
+                                    <label class="form-label" for="signup-phone">Phone number </label>
+                                    <input type="tel" class="form-control" id="signup-phone" name="phone" placeholder="phone number">
+
+                            </div>
+                            <div class="col-6 mb-3">
+                                @error("role")
+                                    <p class="alert alert-danger">{{ $message }}</p>
+                                    @enderror
+                                    <label class="form-label" for="signup-role">Role</label>
+                                    <select name="role" id="signup-role" class="form-select">
+                                        <option value="customer">Customer</option>
+                                        <option value="merchent">Merchant</option>
+                                    </select>
+
+                            </div>
                         </div>
                          <div class="col-12 mb-3">
 
