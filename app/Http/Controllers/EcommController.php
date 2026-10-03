@@ -17,7 +17,6 @@ class EcommController extends Controller
 {
     public function display_home()
     {
-
         $products = Cache::get("products.latest");
         if($products === null){
             $products = Product::latest()->with('image', 'cat')->get();
