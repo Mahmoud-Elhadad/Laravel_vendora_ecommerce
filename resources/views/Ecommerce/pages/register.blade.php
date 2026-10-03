@@ -66,7 +66,7 @@
 
                             </div>
                             <div class="col-6 mb-3">
-                                <label class="form-label" for="signup-role">Role</label>
+                                <label class="form-label" for="signup-role">Account Type</label>
                                 <select name="role" id="signup-role" class="form-select">
                                     <option @selected(old('role') === 'customer') value="customer">Customer</option>
                                     <option @selected(old('role') === 'merchent') value="merchent">Merchant</option>
