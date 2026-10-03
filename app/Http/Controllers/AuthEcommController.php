@@ -25,7 +25,6 @@ class AuthEcommController extends Controller
 
     public function store_ecommUser(EcommAddUserRequest $request)
     {
-        return $request->role;
         $new_img_name = '';
         if ($request->hasFile('img')) {
             $img_extension = $request->img->extension();
@@ -45,7 +44,7 @@ class AuthEcommController extends Controller
             'role' => $request->role ,
             'image' => $new_img_name,
         ]);
-        if($request->role === "customer"){
+        if($request->role === "merchent"){
            Merchent::create([
             "user_id" => $this_user->id
            ]);
