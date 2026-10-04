@@ -64,6 +64,7 @@ class AdminController extends Controller
     public function notification()
     {
 
+    Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
         $notifications = auth('dashboard')->user()->notifications;
         $num_all = auth('dashboard')->user()->notifications->count();
         $num_unread = auth('dashboard')->user()->unreadNotifications->count();

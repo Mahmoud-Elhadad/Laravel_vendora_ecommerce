@@ -16,7 +16,7 @@
       </nav>
             <h1 class="page-title">Products</h1>
           </div>
-          @if(auth("dashboard")->user()->can("create" , Product::class))
+          @if(auth("dashboard")->user()->can("create" , \App\Models\Product::class))
 
             <div class="page-header-actions">
                 <button class="btn btn-subtle" type="button" data-export="products"><i class="fa-solid fa-file-csv me-2"></i>Export CSV</button>

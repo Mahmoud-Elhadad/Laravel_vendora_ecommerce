@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('Dashboard.layout.sidebar', function ($view) {
-            $unreed_notify = auth("dashboard")->user()->unreadNotifications()->count() ?? 0 ;
+            $unreed_notify = auth('dashboard')->user()?->unreadNotifications()->count() ?? 0;
             $view->with('unreed_notify', $unreed_notify);
         });
 

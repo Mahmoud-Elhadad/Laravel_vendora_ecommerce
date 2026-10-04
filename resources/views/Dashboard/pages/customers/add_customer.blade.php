@@ -47,6 +47,20 @@
                     <div class="invalid-feedback">Use digits, spaces and + ( ) - only.</div>
                 </div>
                 <div class="col-12 col-md-12">
+                    @error("role")
+                        <p class="alert alert-danger">{{ $message }}</p>
+                    @enderror
+                    <label class="form-label" for="clientRole">Role</label>
+                    <select class="form-select" id="clientRole"  name="role" required>
+
+                        <option @selected(old("role") == "customer") value="customer">Customer</option>
+                        <option @selected(old("role") == "merchent") value="merchent">Merchant</option>
+
+                    </select>
+                    <div class="invalid-feedback">Pick the role that matches their duties.</div>
+                    <div class="form-text">The role pre-fills the permission set below.</div>
+                </div>
+                <div class="col-12 col-md-12">
                     @error("password")
                         <p class="alert alert-danger">{{ $message }}</p>
                     @enderror
@@ -71,7 +85,7 @@
         </div>
         <div class="modal-footer">
         <a href="{{ route("customer.index") }}" class="btn btn-subtle">Cancel</a>
-        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check me-2"></i>Save customer</button>
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check me-2"></i>Save client</button>
         </div>
     </form>
 

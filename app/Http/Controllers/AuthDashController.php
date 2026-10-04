@@ -14,10 +14,16 @@ class AuthDashController extends Controller
     {
         if (Auth::guard('dashboard')->check()) {
             return to_route('vendora.index');
-        } else {
-
-            return view('Dashboard.pages.login');
         }
+
+        if (Auth::guard('ecomm')->check()) {
+            if (auth('ecomm')->user()?->merchent?->status === 'approved') {
+                return to_route('vendora.index');
+            }
+        }
+
+        return view('Dashboard.pages.login');
+
     }
 
     public function check_dash(Request $request)
@@ -30,21 +36,34 @@ class AuthDashController extends Controller
         if (Auth::guard('dashboard')->attempt($request->except(('_token')))) {
 
             return to_route('vendora.index');
-        } else {
-            return to_route('dash.loginForm')->with('error', 'E-mail or Password are not valid');
         }
+
+        if (Auth::guard('ecomm')->attempt($request->except('_token'))) {
+            if (auth('ecomm')->user()?->merchent?->status === 'approved') {
+                return to_route('vendora.index');
+            } else {
+                return to_route('dash.loginForm')->with('error', 'This account is not approved yet!');
+            }
+        }
+
+        return to_route('dash.loginForm')->with('error', 'E-mail or Password are not valid');
+
     }
 
     public function logout_dash()
     {
         if (Auth::guard('dashboard')->check()) {
-
             Auth::guard('dashboard')->logout();
-
-            return to_route('dash.loginForm');
-        } else {
-            return to_route('dash.loginForm');
         }
+
+        if (Auth::guard('ecomm')->check()) {
+            if (auth('ecomm')->user()?->merchent?->status === 'approved') {
+                Auth::guard('ecomm')->logout();
+            }
+        }
+
+        return to_route('dash.loginForm');
+
     }
 
     // End Authintication

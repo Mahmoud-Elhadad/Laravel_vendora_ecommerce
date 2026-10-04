@@ -1,63 +1,65 @@
 
-  <!-- ============ Top navbar ============ -->
-  <header class="topbar">
+@if(auth("dashboard")->check())
+
+    <!-- ============ Top navbar ============ -->
+    <header class="topbar">
     <div class="topbar-start">
-      <button class="btn btn-icon sidebar-toggle" type="button" data-sidebar-toggle aria-label="Toggle navigation" title="Toggle navigation">
+        <button class="btn btn-icon sidebar-toggle" type="button" data-sidebar-toggle aria-label="Toggle navigation" title="Toggle navigation">
         <i class="fa-solid fa-bars"></i>
-      </button>
+        </button>
 
 
     </div>
 
     <div class="topbar-end">
-      <button class="btn btn-icon" type="button" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
+        <button class="btn btn-icon" type="button" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
         <i class="fa-solid fa-moon theme-icon-dark"></i>
         <i class="fa-solid fa-sun theme-icon-light"></i>
-      </button>
+        </button>
 
-      <div class="dropdown">
+        <div class="dropdown">
         <button class="btn btn-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Quick actions" title="Quick actions">
-          <i class="fa-solid fa-bolt"></i>
+            <i class="fa-solid fa-bolt"></i>
         </button>
         <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-2 quick-actions">
-          <p class="dropdown-header px-2">Quick actions</p>
-          <div class="row g-2">
+            <p class="dropdown-header px-2">Quick actions</p>
+            <div class="row g-2">
             <div class="col-6">
-              <a class="quick-action" href="{{ route("product.create") }}">
+                <a class="quick-action" href="{{ route("product.create") }}">
                 <span class="quick-action-icon bg-primary-subtle text-primary"><i class="fa-solid fa-box-open"></i></span>
                 <span>New product</span>
-              </a>
+                </a>
             </div>
 
             <div class="col-6">
-              <a class="quick-action" href="{{ route("cat.create") }}">
+                <a class="quick-action" href="{{ route("cat.create") }}">
                 <span class="quick-action-icon bg-info-subtle text-info"><i class="fa-solid fa-tags"></i></span>
                 <span>New Category</span>
-              </a>
+                </a>
             </div>
 
             <div class="col-6">
-              <a class="quick-action" href="{{ route("customer.create") }}">
+                <a class="quick-action" href="{{ route("customer.create") }}">
                 <span class="quick-action-icon bg-info-subtle text-info"><i class="fa-solid fa-user-group"></i></span>
                 <span>New customer</span>
-              </a>
+                </a>
             </div>
 
             <div class="col-6">
-              <a class="quick-action" href="{{ route("admin.create") }}">
+                <a class="quick-action" href="{{ route("admin.create") }}">
                 <span class="quick-action-icon bg-info-subtle text-info"><i class="fa-solid fa-users-gear"></i></span>
                 <span>New Staff</span>
-              </a>
+                </a>
             </div>
 
 
-          </div>
+            </div>
         </div>
-      </div>
+        </div>
 
 
         <a href="{{ route("dash.show.message") }}" class="btn btn-icon has-dot">
-          <i class="fa-regular fa-comment-dots"></i>
+            <i class="fa-regular fa-comment-dots"></i>
         </a>
 
         <a href="{{ route("admin.notify") }}" class="btn btn-icon has-dot">
@@ -67,9 +69,9 @@
 
 
 
-      <div class="vr mx-1 d-none d-sm-block"></div>
+        <div class="vr mx-1 d-none d-sm-block"></div>
 
-      @if(Auth::guard("dashboard")->check())
+        @if(Auth::guard("dashboard")->check())
 
         <div class="dropdown">
             <button class="btn btn-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -97,9 +99,10 @@
             </ul>
         </div>
 
-      @endif
+        @endif
 
     </div>
-  </header>
+    </header>
+@endif
 
   @yield('body')

@@ -19,8 +19,12 @@ class AuthAdminMiddleware
         if (Auth::guard('dashboard')->check()) {
 
             return $next($request);
-        } else {
-            return to_route('dash.loginForm');
         }
+        if (auth('ecomm')->user()?->merchent?->status === 'approved') {
+            return $next($request);
+        }
+
+        return to_route('dash.loginForm');
+
     }
 }

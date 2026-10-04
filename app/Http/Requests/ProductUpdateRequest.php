@@ -29,6 +29,7 @@ class ProductUpdateRequest extends FormRequest
             'count' => 'required|integer|min:1',
             'img.*' => 'image',
             'cat_id' => 'required|exists:cats,id',
+            'description' => 'required|string|min:20|max:160',
         ];
     }
 }

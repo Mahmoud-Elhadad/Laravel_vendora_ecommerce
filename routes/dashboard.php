@@ -4,20 +4,19 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthDashController;
 use App\Http\Controllers\CatController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\MerchentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\AuthAdminMiddleware;
 use App\Models\Cat;
 use App\Models\EcommUser;
 use App\Models\Product;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(AuthAdminMiddleware::class)->group(function () {
 
     Route::get('index', function () {
-        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
-        
+
         $num_all = Product::count();
 
         $eight_products = Product::latest()->with('cat', 'image')->take(8)->get();
@@ -58,6 +57,11 @@ Route::middleware(AuthAdminMiddleware::class)->group(function () {
 
     // Route for customer controller
     Route::resource('customer', CustomerController::class);
+
+    // Route for merchant controller
+    Route::resource('merchents', MerchentController::class);
+    Route::get('approved/{id}', [MerchentController::class, 'approved'])->name('merchant.approve');
+    Route::get('rejected/{id}', [MerchentController::class, 'rejected'])->name('merchant.reject');
 
 });
 

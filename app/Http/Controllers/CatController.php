@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CatController extends Controller
 {
@@ -12,6 +13,8 @@ class CatController extends Controller
      */
     public function index()
     {
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+
         $cats = Cat::all();
 
         return view('Dashboard.pages.cats.view_cats', compact('cats'));
@@ -22,6 +25,7 @@ class CatController extends Controller
      */
     public function create()
     {
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
         return view('Dashboard.pages.cats.add_cats');
     }
 
@@ -30,6 +34,7 @@ class CatController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
         $request->validate([
             'name' => 'required|string|min:2|unique:cats,name',
             'img' => 'required|image',
@@ -80,6 +85,7 @@ class CatController extends Controller
      */
     public function destroy(Cat $cat)
     {
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
         unlink(storage_path("app/public/images/cats/$cat->img"));
 
         Cat::where('id', $cat->id)->delete();

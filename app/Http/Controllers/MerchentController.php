@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EcommUser;
 use App\Models\Merchent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class MerchentController extends Controller
 {
@@ -12,7 +14,34 @@ class MerchentController extends Controller
      */
     public function index()
     {
-        //
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        $customers = EcommUser::with('merchent')->has('merchent')->get();
+
+        $num_customers = $customers->count();
+
+        return view('Dashboard.pages.merchants.merchant', compact('customers', 'num_customers'));
+    }
+
+    public function approved(int $id)
+    {
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        Merchent::where('id', $id)->update([
+            'approved_at' => now(),
+            'status' => 'approved',
+        ]);
+
+        return to_route('merchents.index');
+    }
+
+    public function rejected(int $id)
+    {
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        Merchent::where('id', $id)->update([
+            'rejected_at' => now(),
+            'status' => 'rejected',
+        ]);
+
+        return to_route('merchents.index');
     }
 
     /**
@@ -60,6 +89,11 @@ class MerchentController extends Controller
      */
     public function destroy(Merchent $merchent)
     {
-        //
+        Gate::forUser(auth("dashboard")->user())->authorize("delete-access");
+        EcommUser::where("id" , $merchent->user_id)->update([
+            "role" => "customer"
+        ]);
+        $merchent->delete();
+        return to_route("merchents.index");
     }
 }

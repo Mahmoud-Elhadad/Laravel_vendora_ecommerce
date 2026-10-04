@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EcommAddUserRequest;
 use App\Models\Cart;
 use App\Models\EcommUser;
+use App\Models\Merchent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CustomerController extends Controller
 {
@@ -14,7 +16,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-          $customers = EcommUser::withCount(['carts', 'wishlists'])
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        $customers = EcommUser::withCount(['carts', 'wishlists'])
             ->with('carts.product')
             ->get()
             ->map(function (EcommUser $customer) {
@@ -36,7 +39,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view("Dashboard.pages.customers.add_customer");
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        return view('Dashboard.pages.customers.add_customer');
     }
 
     /**
@@ -44,17 +48,24 @@ class CustomerController extends Controller
      */
     public function store(EcommAddUserRequest $request)
     {
-         $new_img_name = 'user-1.png';
-         EcommUser::create([
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        $new_img_name = 'user-1.png';
+       $this_user = EcommUser::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => $request->password,
             'phone' => $request->phone,
+            'role' => $request->role ,
             'image' => $new_img_name,
         ]);
+         if($request->role === "merchent"){
+           Merchent::create([
+            "user_id" => $this_user->id
+           ]);
+        }
 
-        return to_route("customer.index");
+        return to_route('customer.index');
     }
 
     /**
@@ -86,15 +97,16 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        $img = EcommUser::where("id" , $id)->get("image");
+        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        $img = EcommUser::where('id', $id)->get('image');
         $img_name = $img[0]->image;
 
-        if($img_name !== "user-1.png"){
+        if ($img_name !== 'user-1.png') {
             unlink(storage_path("app/public/images/clients/$img_name"));
         }
 
-        EcommUser::where("id" , $id)->delete();
+        EcommUser::where('id', $id)->delete();
 
-        return to_route("customer.index");
+        return to_route('customer.index');
     }
 }

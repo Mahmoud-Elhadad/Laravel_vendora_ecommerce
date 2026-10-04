@@ -1,5 +1,7 @@
 
-  <!-- ============ Footer ============ -->
+@if(auth("dashboard")->check())
+
+    <!-- ============ Footer ============ -->
   <br>
   <footer class="app-footer mt-2">
     <span>&copy; 2026 NovaCart. All rights reserved.</span>
@@ -102,3 +104,47 @@
   </body>
 </html>
 
+
+
+@elseif (auth("ecomm")->user()?->merchent?->status === "approved")
+
+             </div>
+            <script src="{{ asset("dashboard/merchant") }}/js/dashboard.js"></script>
+            <script>
+                // Dashboard-specific JavaScript
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Initialize search functionality
+                    const searchInput = document.querySelector('.navbar-search input');
+                    if (searchInput) {
+                        searchInput.addEventListener('input', function(e) {
+                            const searchTerm = e.target.value.toLowerCase();
+                            // Search functionality would be implemented here
+                            console.log('Searching for:', searchTerm);
+                        });
+                    }
+
+                    // Notification click handler
+                    const notifications = document.querySelector('.navbar-notifications');
+                    if (notifications) {
+                        notifications.addEventListener('click', function() {
+                            showToast('You have 3 new notifications', 'info');
+                        });
+                    }
+
+                    // Quick action click handlers
+                    const quickActions = document.querySelectorAll('.quick-action');
+                    quickActions.forEach(action => {
+                        action.addEventListener('click', function(e) {
+                            // Let the link work normally, just show a toast
+                            setTimeout(() => {
+                                showToast('Navigating to ' + this.querySelector('h4').textContent, 'info');
+                            }, 100);
+                        });
+                    });
+                });
+            </script>
+        </body>
+    </html>
+
+
+@endif
