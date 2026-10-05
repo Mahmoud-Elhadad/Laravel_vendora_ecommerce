@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\MerchantApproved;
+use App\Events\MerchantRejected;
 use App\Models\EcommUser;
 use App\Models\Merchent;
 use Illuminate\Http\Request;
@@ -44,6 +45,10 @@ class MerchentController extends Controller
             'rejected_at' => now(),
             'status' => 'rejected',
         ]);
+
+         $merchant = Merchent::with("user")->findOrFail($id);
+
+         event(new MerchantRejected($merchant));
 
         return to_route('merchents.index');
     }
