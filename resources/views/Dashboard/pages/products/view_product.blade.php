@@ -133,7 +133,7 @@
                     <td class="table-actions"><div class="btn-actions"><a class="btn-action" href="{{ route("product.edit" , $product->id) }}" data-bs-toggle="tooltip" title="View"><i class="fa-regular fa-eye"></i><span class="visually-hidden">View</span></a><a class="btn-action" href="{{ route("product.edit" , $product->id) }}" data-bs-toggle="tooltip" title="Edit"><i class="fa-regular fa-pen-to-square"></i><span class="visually-hidden">Edit</span></a>
 
 
-                        @if(auth("dashboard")->user()->can("create" , Product::class))
+                        @if(auth("dashboard")->user()->can("create" , \App\Models\Product::class))
 
                             <button type="button" class="btn-action danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal-{{ $product->id }}"><i class="fa-regular fa-trash-can"></i><span class="visually-hidden">Delete</span>
                             </button>
