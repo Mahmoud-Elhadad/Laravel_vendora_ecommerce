@@ -52,7 +52,7 @@
                     </tr>
                 </table>
 
-                <h1 style="margin:0; text-align:center; font-size:36px; line-height:1.2; color:#172033;">
+                <h1 style="margin:0; text-align:center; font-size:40px; line-height:1.2; color:#172033;">
                     Application Update
                 </h1>
 
@@ -98,7 +98,7 @@
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
                                     <td width="35%" style="font-size:12px; color:#718096;">First Name :</td>
-                                    <td style="font-size:12px; color:#172033;">{{ $merchant->user->first_name }}</td>
+                                    <td style="font-size:15px; color:#172033;">{{ $merchant->user->first_name }}</td>
                                 </tr>
                             </table>
 
@@ -106,15 +106,15 @@
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
                                     <td width="35%" style="font-size:12px; color:#718096;">Last Name :</td>
-                                    <td style="font-size:12px; color:#172033;">{{ $merchant->user->last_name }}</td>
+                                    <td style="font-size:15px; color:#172033;">{{ $merchant->user->last_name }}</td>
                                 </tr>
                             </table>
 
                             <!-- Email -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
-                                    <td width="35%" style="font-size:10px; color:#718096;">Email :</td>
-                                    <td style="font-size:10px; color:#172033;">{{ $merchant->user->email }}</td>
+                                    <td width="35%" style="font-size:12px; color:#718096;">Email :</td>
+                                    <td style="font-size:13px; color:#172033;">{{ $merchant->user->email }}</td>
                                 </tr>
                             </table>
 
@@ -122,7 +122,7 @@
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
                                     <td width="35%" style="font-size:12px; color:#718096;">Phone :</td>
-                                    <td style="font-size:12px; color:#172033;">{{ $merchant->user->phone }}</td>
+                                    <td style="font-size:15px; color:#172033;">{{ $merchant->user->phone }}</td>
                                 </tr>
                             </table>
 
@@ -132,7 +132,7 @@
                                     <td width="35%" style="font-size:12px; color:#718096;">Status :</td>
                                     <td>
                                         <span style="display:inline-block; padding:6px 14px; background:#fde2e2;
-                                                     color:#c53030; border-radius:20px; font-size:12px; font-weight:bold;">
+                                                     color:#c53030; border-radius:20px; font-size:13px; font-weight:bold;">
                                             Rejected
                                         </span>
                                     </td>
@@ -143,8 +143,11 @@
                             <div style="height:1px; background:#f0dede; margin:28px 0;"></div>
 
                             <!-- What's next -->
-                            <h3 style="margin:0 0 8px; font-size:18px; color:#172033;">What's next?</h3>
-                            <p style="margin:0; font-size:14px; line-height:1.6; color:#718096;">
+                            <h3 style="margin:0 0 8px; font-size:18px; color:#172033;">
+                                What's next?
+                            </h3>
+
+                            <p style="margin:0 0 12px; font-size:14px; line-height:1.6; color:#718096;">
                                 You're welcome to review your information and submit a new application.
                                 If you have any questions, please contact our support team.
                             </p>
