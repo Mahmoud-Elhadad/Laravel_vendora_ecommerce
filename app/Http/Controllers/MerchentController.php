@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MerchantApproved;
 use App\Models\EcommUser;
 use App\Models\Merchent;
 use Illuminate\Http\Request;
@@ -30,6 +31,9 @@ class MerchentController extends Controller
             'status' => 'approved',
         ]);
 
+         $merchant = Merchent::with("user")->findOrFail($id);
+
+        event(new MerchantApproved($merchant));
         return to_route('merchents.index');
     }
 
