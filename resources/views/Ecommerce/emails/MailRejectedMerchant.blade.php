@@ -114,7 +114,7 @@
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
                                     <td width="35%" style="font-size:12px; color:#718096;">Email :</td>
-                                    <td style="font-size:13px; color:#172033;">{{ $merchant->user->email }}</td>
+                                    <td style="font-size:11px; color:#172033;">{{ $merchant->user->email }}</td>
                                 </tr>
                             </table>
 
