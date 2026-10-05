@@ -3,6 +3,8 @@
 namespace App\Providers\Auth;
 
 use App\Models\Admin;
+use App\Models\Merchent;
+use App\Models\Product;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -37,6 +39,10 @@ class GateServiceProvider extends ServiceProvider
 
         Gate::define("show-dashboard" , function(Admin $admin){
             return in_array($admin->role , ["super admin" , "admin" , "manager" , "sales" , "support"]);
+        });
+
+        Gate::define("merchant-update-product" , function(Merchent $merchent , Product $product){
+            return $merchent->id === $product->merchent_id;
         });
 
 

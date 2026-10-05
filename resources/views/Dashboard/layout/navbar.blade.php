@@ -1,5 +1,5 @@
 
-@if(auth("dashboard")->check())
+
 
     <!-- ============ Top navbar ============ -->
     <header class="topbar">
@@ -17,60 +17,92 @@
         <i class="fa-solid fa-sun theme-icon-light"></i>
         </button>
 
-        <div class="dropdown">
-        <button class="btn btn-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Quick actions" title="Quick actions">
-            <i class="fa-solid fa-bolt"></i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-2 quick-actions">
-            <p class="dropdown-header px-2">Quick actions</p>
-            <div class="row g-2">
-            <div class="col-6">
-                <a class="quick-action" href="{{ route("product.create") }}">
-                <span class="quick-action-icon bg-primary-subtle text-primary"><i class="fa-solid fa-box-open"></i></span>
-                <span>New product</span>
-                </a>
+        @if(auth("dashboard")->check())
+
+            <div class="dropdown">
+            <button class="btn btn-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Quick actions" title="Quick actions">
+                <i class="fa-solid fa-bolt"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-2 quick-actions">
+                <p class="dropdown-header px-2">Quick actions</p>
+                <div class="row g-2">
+                <div class="col-6">
+                    <a class="quick-action" href="{{ route("product.create") }}">
+                    <span class="quick-action-icon bg-primary-subtle text-primary"><i class="fa-solid fa-box-open"></i></span>
+                    <span>New product</span>
+                    </a>
+                </div>
+
+                <div class="col-6">
+                    <a class="quick-action" href="{{ route("cat.create") }}">
+                    <span class="quick-action-icon bg-info-subtle text-info"><i class="fa-solid fa-tags"></i></span>
+                    <span>New Category</span>
+                    </a>
+                </div>
+
+                <div class="col-6">
+                    <a class="quick-action" href="{{ route("customer.create") }}">
+                    <span class="quick-action-icon bg-info-subtle text-info"><i class="fa-solid fa-user-group"></i></span>
+                    <span>New customer</span>
+                    </a>
+                </div>
+
+                <div class="col-6">
+                    <a class="quick-action" href="{{ route("admin.create") }}">
+                    <span class="quick-action-icon bg-info-subtle text-info"><i class="fa-solid fa-users-gear"></i></span>
+                    <span>New Staff</span>
+                    </a>
+                </div>
+
+
+                </div>
             </div>
-
-            <div class="col-6">
-                <a class="quick-action" href="{{ route("cat.create") }}">
-                <span class="quick-action-icon bg-info-subtle text-info"><i class="fa-solid fa-tags"></i></span>
-                <span>New Category</span>
-                </a>
             </div>
+            <a href="{{ route("dash.show.message") }}" class="btn btn-icon has-dot">
+                <i class="fa-regular fa-comment-dots"></i>
+            </a>
 
-            <div class="col-6">
-                <a class="quick-action" href="{{ route("customer.create") }}">
-                <span class="quick-action-icon bg-info-subtle text-info"><i class="fa-solid fa-user-group"></i></span>
-                <span>New customer</span>
-                </a>
-            </div>
-
-            <div class="col-6">
-                <a class="quick-action" href="{{ route("admin.create") }}">
-                <span class="quick-action-icon bg-info-subtle text-info"><i class="fa-solid fa-users-gear"></i></span>
-                <span>New Staff</span>
-                </a>
-            </div>
+            <a href="{{ route("admin.notify") }}" class="btn btn-icon has-dot">
+                <i class="fa-regular fa-bell"></i>
+            </a>
+        @endif
 
 
-            </div>
-        </div>
-        </div>
-
-
-        <a href="{{ route("dash.show.message") }}" class="btn btn-icon has-dot">
-            <i class="fa-regular fa-comment-dots"></i>
-        </a>
-
-        <a href="{{ route("admin.notify") }}" class="btn btn-icon has-dot">
-            <i class="fa-regular fa-bell"></i>
-        </a>
 
 
 
 
         <div class="vr mx-1 d-none d-sm-block"></div>
 
+        @if(Auth::guard("ecomm")->user()?->merchent?->status === 'approved')
+
+        <div class="dropdown">
+            <button class="btn btn-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="avatar avatar-sm avatar-brand">{{ Auth::guard("ecomm")->user()->first_name ? collect(explode(' ', Auth::guard("ecomm")->user()->first_name))->map(fn($w) => $w[0])->implode('') : '' }}</span>
+            <span class="btn-profile-meta d-none d-md-flex">
+                <strong>{{ Auth::guard("ecomm")->user()->first_name }} {{ Auth::guard("ecomm")->user()->last_name }}</strong>
+                <small class="text-capitalize">{{ Auth::guard("ecomm")->user()->role }}</small>
+            </span>
+            <i class="fa-solid fa-chevron-down ms-1 small opacity-50"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-md p-2">
+            <li class="dropdown-user">
+                <span class="avatar avatar-sm avatar-brand">{{ Auth::guard("ecomm")->user()->first_name ? collect(explode(' ', Auth::guard("ecomm")->user()->first_name))->map(fn($w) => $w[0])->implode('') : '' }}</span>
+                <span>
+                <strong>{{ Auth::guard("ecomm")->user()->first_name }} {{ Auth::guard("ecomm")->user()->last_name }}</strong>
+                <small class="d-block text-body-secondary">{{ Auth::guard("ecomm")->user()->email }}</small>
+                </span>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item rounded-2" href="{{ route("view.myProfile") }}"><i class="fa-regular fa-user me-2"></i>My Profile</a></li>
+
+
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item rounded-2 text-danger" href="#" data-action="logout"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a></li>
+            </ul>
+        </div>
+
+        @endif
         @if(Auth::guard("dashboard")->check())
 
         <div class="dropdown">
@@ -103,6 +135,6 @@
 
     </div>
     </header>
-@endif
+
 
   @yield('body')

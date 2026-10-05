@@ -16,7 +16,7 @@
       </nav>
             <h1 class="page-title">Products</h1>
           </div>
-          @if(auth("dashboard")->user()->can("create" , \App\Models\Product::class))
+          @if(auth("dashboard")->user()?->can("create" , \App\Models\Product::class) || auth("ecomm")->user()?->merchent?->status === "approved")
 
             <div class="page-header-actions">
                 <button class="btn btn-subtle" type="button" data-export="products"><i class="fa-solid fa-file-csv me-2"></i>Export CSV</button>
@@ -98,6 +98,13 @@
                   <th class="sortable" data-sort="category" scope="col">Category</th>
                   <th class="sortable" data-sort="price" scope="col">Price</th>
                   <th>Sold</th>
+
+                  @if(auth("dashboard")->check())
+
+                  <th class="sortable text-end" data-sort="Merchent_email" scope="col">Merchant Email</th>
+
+                  @endif
+
                   <th class="sortable text-end" data-sort="count" scope="col">Count</th>
                   <th class="table-actions" scope="col"><span class="visually-hidden">Actions</span></th>
                 </tr>
@@ -128,12 +135,21 @@
                     <td data-label="Price" class="cell-primary" data-sort-value="{{ $product->price }}" data-export-value="{{ $product->price - ($product->price * $product->discount / 100) }}">${{ $product->price - ($product->price * $product->discount / 100) }}<span class="cell-sub"><s>${{ $product->price }}</s> <span class="text-success">−{{ $product->discount }}%</span></span></td>
 
                     <td data-label="Sold">{{ $product->sold_quantity }}</td>
-                    <td data-label="Revenue" class="text-end" data-sort-value="{{ $product->count }}" data-export-value="{{ $product->count }}">{{ $product->count }}</td>
+
+                     @if(auth("dashboard")->check())
+
+                         <td data-label="Merchant_email" class="text-end" data-sort-value="{{ $product->merchent?->user->email }}" data-export-value="{{ $product->merchent?->user->email }}">
+                            @php
+                               echo $product->merchent?->user->email !== null ? $product->merchent?->user->email : "Product's store"
+                            @endphp
+                         </td>
+
+                     @endif
 
                     <td class="table-actions"><div class="btn-actions"><a class="btn-action" href="{{ route("product.edit" , $product->id) }}" data-bs-toggle="tooltip" title="View"><i class="fa-regular fa-eye"></i><span class="visually-hidden">View</span></a><a class="btn-action" href="{{ route("product.edit" , $product->id) }}" data-bs-toggle="tooltip" title="Edit"><i class="fa-regular fa-pen-to-square"></i><span class="visually-hidden">Edit</span></a>
 
 
-                        @if(auth("dashboard")->user()->can("create" , \App\Models\Product::class))
+                        @if(auth("dashboard")->user()?->can("create" , \App\Models\Product::class) || auth("ecomm")->user()?->merchent?->status === "approved")
 
                             <button type="button" class="btn-action danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal-{{ $product->id }}"><i class="fa-regular fa-trash-can"></i><span class="visually-hidden">Delete</span>
                             </button>

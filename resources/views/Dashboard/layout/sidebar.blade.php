@@ -1,6 +1,5 @@
 
 
-@if(auth("dashboard")->check())
 
     <!doctype html>
     <html lang="en" data-bs-theme="light">
@@ -63,11 +62,14 @@
                 <span class="nav-text">Products</span>
 
             </a></li>
+            @if(auth("dashboard")->check())
+
                 <li class="nav-subitem"><a class="nav-link {{ Request::routeIs('cat.*') ? 'active' : '' }}" href="{{ route("cat.index") }}" title="Categories">
                 <span class="nav-icon"><i class="fa-solid fa-tags"></i></span>
                 <span class="nav-text">Categories</span>
 
             </a></li>
+            @endif
 
 
             </a></li>
@@ -76,6 +78,8 @@
                 </ul>
                 </div>
             </li>
+
+             @if(auth("dashboard")->check())
 
             <li class="nav-item nav-group">
                 <a class="nav-link nav-toggle {{ Request::routeIs('customer.*') || Request::routeIs('dash.show.message') || Request::routeIs('merchents.*') ? 'active' : '' }}" data-bs-toggle="collapse" href="#nav-customers-group" role="button" aria-expanded="{{ Request::routeIs('customer.*') || Request::routeIs('dash.show.message') || Request::routeIs('merchents.*') ? 'true' : 'false' }}" aria-controls="nav-customers-group" title="Customers">
@@ -138,6 +142,7 @@
                 </ul>
                 </div>
             </li>
+            @endif
             <li class="nav-item nav-group">
                 <a class="nav-link nav-toggle {{ Request::routeIs('view.myProfile') ? 'active' : '' }}" data-bs-toggle="collapse" href="#nav-system" role="button" aria-expanded="{{ Request::routeIs('view.myProfile') ? 'true' : 'false' }}" aria-controls="nav-system" title="System">
                 <span class="nav-icon"><i class="fa-solid fa-gear"></i></span>
@@ -162,58 +167,10 @@
         </ul>
         </div>
 
-        <div class="sidebar-footer">
-        <div class="sidebar-user">
-            <span class="avatar avatar-sm avatar-brand">ME</span>
-            <span class="sidebar-user-meta">
-            <strong>Mahmoud Elhadad</strong>
-            <small>Super Admin</small>
-            </span>
-            <a class="btn btn-icon btn-icon-xs sidebar-user-link" href="{{ route("view.myProfile") }}" title="My profile" aria-label="My profile">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-        </div>
-        </div>
+
     </aside>
     <div class="sidebar-backdrop" data-sidebar-backdrop></div>
 
         <div class="main-wrapper">
 
-@elseif (auth("ecomm")->user()?->merchent?->status === "approved")
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Merchant Dashboard - Overview</title>
-        <link rel="stylesheet" href="{{ asset("dashboard") }}/vendor/fontawesome/css/all.min.css" />
-        <link rel="stylesheet" href="{{ asset("dashboard/merchant") }}/css/dashboard.css">
-    </head>
-    <body>
-        <div class="container">
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <div class="sidebar-header">
-                    <h2><i class="fas fa-store"></i> MerchantHub</h2>
-                </div>
-                <div class="sidebar-merchant">
-                    <div class="sidebar-merchant-avatar" style="overflow: hidden"><img style="width: 50px; height: 50px;" src="{{ asset("storage/images/clients/".auth("ecomm")->user()->image) }}" alt=""></div>
-                    <div class="sidebar-merchant-info">
-                        <h4>{{ auth("ecomm")->user()->first_name }}</h4>
-                        <p>Premium Seller</p>
-                    </div>
-                </div>
-                <ul class="sidebar-menu">
-                    <li><a href="merchant-dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="merchant-products.html"><i class="fas fa-box"></i> My Products</a></li>
-                    <li><a href="merchant-add-product.html"><i class="fas fa-plus-circle"></i> Add Product</a></li>
-                    <li><a href="merchant-orders.html"><i class="fas fa-shopping-cart"></i> Orders</a></li>
-                    <li><a href="merchant-profile.html"><i class="fas fa-user"></i> Profile</a></li>
-                    <li><a class="dropdown-item rounded-2 text-danger" href="{{ route("dash.logout") }}"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a></li>
-                </ul>
-            </aside>
-
-
-@endif
 

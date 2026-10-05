@@ -8,6 +8,7 @@ use App\Models\EcommUser;
 use App\Models\Merchent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
 
 class MerchentController extends Controller
 {
@@ -90,7 +91,29 @@ class MerchentController extends Controller
      */
     public function update(Request $request, Merchent $merchent)
     {
-        //
+        $user_id = $merchent->user_id;
+        $request->validate([
+            'first_name' => 'required|string|min:3',
+            'last_name' => 'required|string|min:3',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('ecomm_users', 'email')->ignore($user_id),
+            ],
+
+            'phone' => [
+                'required',
+                'regex:/^01[0125][0-9]{8}$/',
+                Rule::unique('ecomm_users', 'phone')->ignore($user_id),
+            ],
+        ]);
+        EcommUser::where("id" , $user_id)->update([
+            "first_name" => $request->first_name ,
+            "last_name" => $request->last_name ,
+            "email" => $request->email ,
+            "phone" => $request->phone ,
+        ]);
+        return redirect()->back();
     }
 
     /**

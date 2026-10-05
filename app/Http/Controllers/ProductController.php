@@ -18,8 +18,14 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = Product::with('cat', 'image')->get();
-        $num_products = Product::count();
+         if(auth("dashboard")->check()){
+
+            $products = Product::with('cat', 'image' , "merchent.user")->get();
+            $num_products = Product::count();
+        }elseif(auth("ecomm")->user()?->merchent?->status === 'approved'){
+             $products = Product::where("merchent_id" , auth("ecomm")->user()->merchent->id)->with('cat', 'image')->get();
+             $num_products = Product::where("merchent_id" , auth("ecomm")->user()->merchent->id)->count();
+        }
         $cats = Cat::all();
 
         return view('Dashboard.pages.products.view_product', compact('products', 'cats', 'num_products'));
@@ -30,7 +36,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("create" , Product::class);
+        if(auth("dashboard")->check()){
+
+            Gate::forUser(auth("dashboard")->user())->authorize("create" , Product::class);
+        }
         $cats = Cat::all();
 
         return view('Dashboard.pages.products.add_product', compact('cats'));
@@ -41,9 +50,21 @@ class ProductController extends Controller
      */
     public function store(ProductAddRequest $request)
     {
-         Gate::forUser(auth("dashboard")->user())->authorize("create" , Product::class);
 
-        $product = Product::create($request->except('_token', '_img'));
+
+        if(auth("dashboard")->check()){
+
+            Gate::forUser(auth("dashboard")->user())->authorize("create" , Product::class);
+        }
+
+
+         $product = Product::create($request->except('_token', '_img'));
+
+        if(auth("ecomm")->user()?->merchent?->status === 'approved'){
+          Product::where("id" , $product->id)->update([
+                "merchent_id" => auth("ecomm")->user()->merchent->id
+            ]);
+        }
         Image::saveImg($product->id);
 
         $num_products_cat = Cat::where('id', $request->cat_id)->get('num_products');
@@ -72,7 +93,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-         Gate::forUser(auth("dashboard")->user())->authorize("update" , $product);
+        if(auth("dashboard")->check()){
+
+            Gate::forUser(auth("dashboard")->user())->authorize("update" , $product);
+        }elseif(auth("ecomm")->user()?->merchent?->status === "approved"){
+            $merchent = auth("ecomm")->user()->merchent;
+            Gate::forUser($merchent)->authorize("merchant-update-product" , $product);
+        }
 
         $single_product = Product::where('id', $product->id)->with('image', 'cat')->get();
         $cats = Cat::all();
@@ -85,7 +112,14 @@ class ProductController extends Controller
      */
     public function update(ProductUpdateRequest $request, Product $product)
     {
-         Gate::forUser(auth("dashboard")->user())->authorize("create" , $product);
+        if(auth("dashboard")->check()){
+
+            Gate::forUser(auth("dashboard")->user())->authorize("create" , $product);
+        }elseif(auth("ecomm")->user()?->merchent?->status === "approved"){
+            $merchent = auth("ecomm")->user()->merchent;
+            Gate::forUser($merchent)->authorize("merchant-update-product" , $product);
+        }
+
         if ($request->hasFile('img')) {
 
             $data = Product::where('id', $product->id)->update($request->except('_token', '_method', 'img'));
@@ -106,8 +140,14 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if(auth("dashboard")->check()){
 
-     Gate::forUser(auth("dashboard")->user())->authorize("forceDelete" , $product);
+            Gate::forUser(auth("dashboard")->user())->authorize("forceDelete" , $product);
+        }elseif(auth("ecomm")->user()?->merchent?->status === "approved"){
+            $merchent = auth("ecomm")->user()->merchent;
+            Gate::forUser($merchent)->authorize("merchant-update-product" , $product);
+        }
+
         $num_products_cat = Cat::where('id', $product->cat_id)->get('num_products');
         $count = $num_products_cat[0]->num_products;
         $count--;
