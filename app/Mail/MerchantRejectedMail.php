@@ -17,9 +17,10 @@ class MerchantRejectedMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $merchant;
+    public function __construct($merchant)
     {
-        //
+        $this->merchant = $merchant;
     }
 
     /**
@@ -38,7 +39,7 @@ class MerchantRejectedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'Ecommerce.emails.MailRejectedMerchant',
         );
     }
 
