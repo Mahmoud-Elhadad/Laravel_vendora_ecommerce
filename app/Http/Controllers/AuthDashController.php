@@ -75,6 +75,11 @@ class AuthDashController extends Controller
 
     public function change_password(Request $request)
     {
+        $request->validate([
+            'current_password' => 'required|string',
+            'new_password' => 'required|string|min:6|confirmed',
+        ]);
+
         $user = Auth::guard('dashboard')->user();
 
         if (! Hash::check($request->current_password, $user->password)) {

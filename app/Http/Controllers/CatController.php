@@ -13,7 +13,7 @@ class CatController extends Controller
      */
     public function index()
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        Gate::forUser(auth('dashboard')->user())->authorize('show-dashboard');
 
         $cats = Cat::all();
 
@@ -25,7 +25,8 @@ class CatController extends Controller
      */
     public function create()
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        Gate::forUser(auth('dashboard')->user())->authorize('show-dashboard');
+
         return view('Dashboard.pages.cats.add_cats');
     }
 
@@ -34,7 +35,7 @@ class CatController extends Controller
      */
     public function store(Request $request)
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        Gate::forUser(auth('dashboard')->user())->authorize('show-dashboard');
         $request->validate([
             'name' => 'required|string|min:2|unique:cats,name',
             'img' => 'required|image',
@@ -85,8 +86,12 @@ class CatController extends Controller
      */
     public function destroy(Cat $cat)
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
-        unlink(storage_path("app/public/images/cats/$cat->img"));
+        Gate::forUser(auth('dashboard')->user())->authorize('show-dashboard');
+
+        $imagePath = storage_path("app/public/images/cats/{$cat->img}");
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
 
         Cat::where('id', $cat->id)->delete();
 

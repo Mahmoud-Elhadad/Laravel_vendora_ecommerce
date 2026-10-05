@@ -4,19 +4,19 @@ namespace App\Policies;
 
 use App\Models\Admin;
 use App\Models\Product;
-use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class ProductPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
-    public function before(Admin $user , string $ability) {
-       if($user->role === "super admin"){
-          return true;
-       }
-       return null;
+    public function before(Admin $user, string $ability)
+    {
+        if ($user->role === 'super admin') {
+            return true;
+        }
+
+        return null;
     }
 
     public function viewAny(Admin $user): bool
@@ -45,7 +45,7 @@ class ProductPolicy
      */
     public function update(Admin $user, Product $product): bool
     {
-        return $user->role === "admin";;
+        return $user->role === 'admin';
     }
 
     /**
@@ -53,7 +53,7 @@ class ProductPolicy
      */
     public function delete(Admin $user, Product $product): bool
     {
-        return $user->role === "admin";
+        return $user->role === 'admin';
     }
 
     /**
@@ -61,7 +61,7 @@ class ProductPolicy
      */
     public function restore(Admin $user, Product $product): bool
     {
-        return $user->role === "admin";
+        return $user->role === 'admin';
     }
 
     /**

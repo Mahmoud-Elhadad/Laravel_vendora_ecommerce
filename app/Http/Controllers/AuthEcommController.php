@@ -10,7 +10,6 @@ use App\Models\Merchent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Notification;
 
 class AuthEcommController extends Controller
 {
@@ -41,18 +40,18 @@ class AuthEcommController extends Controller
             'email' => $request->email,
             'password' => $request->password,
             'phone' => $request->phone,
-            'role' => $request->role ,
+            'role' => $request->role,
             'image' => $new_img_name,
         ]);
-        if($request->role === "merchent"){
-           Merchent::create([
-            "user_id" => $this_user->id
-           ]);
+        if ($request->role === 'merchent') {
+            Merchent::create([
+                'user_id' => $this_user->id,
+            ]);
         }
-        $user = ["image" => $new_img_name , "name" => $request->first_name , "email" => $request->email];
-        $admins = Admin::select("id")->get();
-        $content = "A new client has registered successfully with name " . $request->first_name;
-        event(new UserRegistered($user , $admins , $content));
+        $user = ['image' => $new_img_name, 'name' => $request->first_name, 'email' => $request->email];
+        $admins = Admin::select('id')->get();
+        $content = 'A new client has registered successfully with name '.$request->first_name;
+        event(new UserRegistered($user, $admins, $content));
 
         return view('Ecommerce.pages.login');
     }
@@ -90,7 +89,7 @@ class AuthEcommController extends Controller
     {
         $request->validate([
             'current_password' => 'required',
-            'new_password' => 'required|string|min:6|same:confirm',
+            'new_password' => 'required|string|min:6|confirmed',
         ]);
 
         $client = Auth::guard('ecomm')->user();

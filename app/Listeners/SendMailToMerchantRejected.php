@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Mail;
 
 class SendMailToMerchantRejected implements ShouldQueue
 {
-
     use InteractsWithQueue;
+
     /**
      * Create the event listener.
      */
@@ -25,6 +25,6 @@ class SendMailToMerchantRejected implements ShouldQueue
      */
     public function handle(MerchantRejected $event): void
     {
-        Mail::to($event->merchant->user["email"])->send(new MerchantRejectedMail($event->merchant));
+        Mail::to($event->merchant->user->email)->send(new MerchantRejectedMail($event->merchant));
     }
 }

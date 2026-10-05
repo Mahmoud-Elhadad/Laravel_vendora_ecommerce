@@ -16,7 +16,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        Gate::forUser(auth('dashboard')->user())->authorize('show-dashboard');
         $customers = EcommUser::withCount(['carts', 'wishlists'])
             ->with('carts.product')
             ->get()
@@ -39,7 +39,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        Gate::forUser(auth('dashboard')->user())->authorize('show-dashboard');
+
         return view('Dashboard.pages.customers.add_customer');
     }
 
@@ -48,21 +49,21 @@ class CustomerController extends Controller
      */
     public function store(EcommAddUserRequest $request)
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
+        Gate::forUser(auth('dashboard')->user())->authorize('show-dashboard');
         $new_img_name = 'user-1.png';
-       $this_user = EcommUser::create([
+        $this_user = EcommUser::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => $request->password,
             'phone' => $request->phone,
-            'role' => $request->role ,
+            'role' => $request->role,
             'image' => $new_img_name,
         ]);
-         if($request->role === "merchent"){
-           Merchent::create([
-            "user_id" => $this_user->id
-           ]);
+        if ($request->role === 'merchent') {
+            Merchent::create([
+                'user_id' => $this_user->id,
+            ]);
         }
 
         return to_route('customer.index');
@@ -97,15 +98,18 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        Gate::forUser(auth("dashboard")->user())->authorize("show-dashboard");
-        $img = EcommUser::where('id', $id)->get('image');
-        $img_name = $img[0]->image;
+        Gate::forUser(auth('dashboard')->user())->authorize('show-dashboard');
 
-        if ($img_name !== 'user-1.png') {
-            unlink(storage_path("app/public/images/clients/$img_name"));
+        $customer = EcommUser::findOrFail($id);
+
+        if ($customer->image !== 'user-1.png') {
+            $imagePath = storage_path("app/public/images/clients/{$customer->image}");
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
         }
 
-        EcommUser::where('id', $id)->delete();
+        $customer->delete();
 
         return to_route('customer.index');
     }

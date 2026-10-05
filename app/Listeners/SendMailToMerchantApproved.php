@@ -13,8 +13,9 @@ class SendMailToMerchantApproved implements ShouldQueue
     use InteractsWithQueue;
 
     public $tries = 3;
+
     public $backoff = 15;
-    
+
     /**
      * Create the event listener.
      */
@@ -28,6 +29,6 @@ class SendMailToMerchantApproved implements ShouldQueue
      */
     public function handle(MerchantApproved $event): void
     {
-        Mail::to($event->merchant->user["email"])->send(new MerchantApprovedMail($event->merchant));
+        Mail::to($event->merchant->user->email)->send(new MerchantApprovedMail($event->merchant));
     }
 }

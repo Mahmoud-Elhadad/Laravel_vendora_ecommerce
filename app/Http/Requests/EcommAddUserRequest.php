@@ -26,9 +26,9 @@ class EcommAddUserRequest extends FormRequest
             'first_name' => 'required|string|min:3',
             'last_name' => 'required|string|min:3',
             'email' => 'required|email|unique:ecomm_users,email',
-            'password' => 'required|string|min:6|same:confirm',
+            'password' => 'required|string|min:6|confirmed',
             'phone' => 'required|regex:/^01[0125][0-9]{8}$/|unique:ecomm_users,phone',
-            'role' => "required|in:customer,merchent" ,
+            'role' => 'required|in:customer,merchent',
             'img' => 'image',
         ];
     }

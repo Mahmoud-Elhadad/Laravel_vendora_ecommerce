@@ -9,16 +9,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('merchents', function (Blueprint $table) {
-            // Fix nullable to not nullable first, then add the foreign key
-            $table->foreignId('user_id')->nullable()->change();
-            $table->foreign('user_id')->references('id')->on('ecomm_users')->onDelete('cascade');
+            // The FK was already created in create_merchents_table migration.
+            // This migration only makes user_id nullable to support soft-deleted users.
+            $table->unsignedBigInteger('user_id')->nullable()->change();
         });
     }
 
     public function down(): void
     {
         Schema::table('merchents', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
+            $table->unsignedBigInteger('user_id')->nullable(false)->change();
         });
     }
 };

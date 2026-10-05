@@ -17,27 +17,26 @@ class EcommController extends Controller
 {
     public function display_home()
     {
-        $products = Cache::get("products.latest");
-        if($products === null){
+        $products = Cache::get('products.latest');
+        if ($products === null) {
             $products = Product::latest()->with('image', 'cat')->get();
-            Cache::put("products.latest" , $products , 3600);
+            Cache::put('products.latest', $products, 3600);
         }
 
-
-        $best_products_sold  = Cache::get("best_products_sold");
-        if($best_products_sold === null){
+        $best_products_sold = Cache::get('best_products_sold');
+        if ($best_products_sold === null) {
             $best_products_sold = Product::orderByDesc('sold_quantity')->with('cat', 'image')->take(8)->get();
-            Cache::put("best_products_sold" , $best_products_sold , 3600);
+            Cache::put('best_products_sold', $best_products_sold, 3600);
         }
 
         $wishlistedIds = Auth::guard('ecomm')->check()
             ? Whilist::where('user_id', Auth::guard('ecomm')->id())->pluck('product_id')->toArray()
             : [];
 
-        $all_categories = Cache::memo()->get("all_categories");
-        if($all_categories === null){
-            $all_categories = Cat::where("num_products" , ">" , 0)->get();
-            Cache::memo()->put("all_categories" , $all_categories , 3600);
+        $all_categories = Cache::memo()->get('all_categories');
+        if ($all_categories === null) {
+            $all_categories = Cat::where('num_products', '>', 0)->get();
+            Cache::memo()->put('all_categories', $all_categories, 3600);
 
         }
 
@@ -89,7 +88,16 @@ class EcommController extends Controller
 
     public function store_message(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|max:100',
+            'subject' => 'required|string|max:200',
+            'message' => 'required|string|max:2000',
+        ]);
+
         UserMessage::create($request->except('_token'));
+
+        return to_route('show.message')->with('success', 'Your message has been sent!');
     }
 
     public function store_cart(Request $request)
@@ -158,14 +166,12 @@ class EcommController extends Controller
         $cart_id = $request->cart_id;
         $cart = Cart::findOrFail($cart_id);
 
-        if ($cart) {
-            $product = Product::findOrFail($cart->product_id);
-            if ($product) {
-                $product->decrement('sold_quantity', $cart->count);
-                $product->increment('count', $cart->count);
-            }
-            $cart->delete();
-        }
+        $product = Product::findOrFail($cart->product_id);
+        $product->decrement('sold_quantity', $cart->count);
+        $product->increment('count', $cart->count);
+        $cart->delete();
+
+        return response()->json(['status' => 'success', 'message' => 'Item removed from cart.']);
     }
 
     public function clear_all_cart()

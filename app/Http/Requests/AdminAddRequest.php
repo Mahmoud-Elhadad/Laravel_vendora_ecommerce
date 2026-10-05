@@ -25,7 +25,7 @@ class AdminAddRequest extends FormRequest
         return [
             'name' => 'required|string|min:3',
             'email' => 'required|email|unique:admins,email',
-            'password' => 'required|string|min:6|same:confirm',
+            'password' => 'required|string|min:6|confirmed',
             'phone' => 'required|regex:/^01[0125][0-9]{8}$/|unique:admins,phone',
             'role' => 'required|in:super admin,admin,manager,sales,support',
             'gender' => 'required|in:male,female',

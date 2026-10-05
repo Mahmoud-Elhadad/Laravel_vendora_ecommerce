@@ -17,23 +17,19 @@ Route::middleware(AuthAdminMiddleware::class)->group(function () {
 
     Route::get('index', function () {
 
-        if(auth("dashboard")->check()){
-
-            $num_all = Product::count();
-
-            $eight_products = Product::latest()->with('cat', 'image')->take(8)->get();
-
-
-
-
-        }elseif(auth("ecomm")->user()?->merchent?->status === "approved"){
-             $num_all = Product::where("merchent_id" , auth("ecomm")->user()->merchent->id)->count();
-            $eight_products = Product::where("merchent_id" , auth("ecomm")->user()->merchent->id)->latest()->with('cat', 'image')->take(8)->get();
-        }
-        
+        $num_all = 0;
+        $eight_products = collect();
         $all_clients = EcommUser::count();
-
         $all_cats = Cat::count();
+
+        if (auth('dashboard')->check()) {
+            $num_all = Product::count();
+            $eight_products = Product::latest()->with('cat', 'image')->take(8)->get();
+        } elseif (auth('ecomm')->user()?->merchent?->status === 'approved') {
+            $merchantId = auth('ecomm')->user()->merchent->id;
+            $num_all = Product::where('merchent_id', $merchantId)->count();
+            $eight_products = Product::where('merchent_id', $merchantId)->latest()->with('cat', 'image')->take(8)->get();
+        }
 
         return view('Dashboard.pages.index', compact('num_all', 'eight_products', 'all_clients', 'all_cats'));
     })->name('vendora.index');

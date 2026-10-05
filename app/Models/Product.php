@@ -14,6 +14,7 @@ class Product extends Model
         'sold_quantity',
         'description',
         'cat_id',
+        'merchent_id',
     ];
 
     public function cat()
@@ -26,7 +27,8 @@ class Product extends Model
         return $this->hasMany(Image::class);
     }
 
-    public function merchent() {
+    public function merchent()
+    {
         return $this->belongsTo(Merchent::class);
     }
 }
