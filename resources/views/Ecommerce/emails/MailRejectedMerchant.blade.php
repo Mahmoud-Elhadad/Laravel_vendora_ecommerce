@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light only">
     <meta name="supported-color-schemes" content="light only">
-    <title>Merchant Application Approved</title>
+    <title>Merchant Application Update</title>
     <style>
         :root { color-scheme: light only; supported-color-schemes: light only; }
     </style>
 </head>
-<body style="margin:0; padding:0; background-color:#f5f8f7; font-family:Arial, Helvetica, sans-serif; color:#172033;" bgcolor="#f5f8f7">
+<body style="margin:0; padding:0; background-color:#f8f5f5; font-family:Arial, Helvetica, sans-serif; color:#172033;" bgcolor="#f8f5f5">
 
-<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f5f8f7"
-       style="background-color:#f5f8f7; padding:40px 15px;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f5f5"
+       style="background-color:#f8f5f5; padding:40px 15px;">
 <tr>
 <td align="center">
 
@@ -22,7 +22,7 @@
 
         <!-- Header -->
         <tr>
-            <td style="padding:28px 40px; border-bottom:1px solid #eef2f1;">
+            <td style="padding:28px 40px; border-bottom:1px solid #f2eeee;">
                 <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                         <td>
@@ -41,41 +41,39 @@
         <tr>
             <td style="padding:50px 45px 35px;">
 
-                <!-- Success Icon -->
+                <!-- Icon -->
                 <table cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto 25px;">
                     <tr>
-                        <td width="72" height="72" align="center" valign="middle" bgcolor="#dff8ed"
-                            style="width:72px; height:72px; background:#dff8ed; border-radius:50%;
-                                   color:#16a879; font-size:36px; font-weight:bold;">
-                            ✓
+                        <td width="72" height="72" align="center" valign="middle" bgcolor="#fde8e8"
+                            style="width:72px; height:72px; background:#fde8e8; border-radius:50%;
+                                   color:#e5484d; font-size:36px; font-weight:bold;">
+                            ✕
                         </td>
                     </tr>
                 </table>
 
-                <h1 style="margin:0; text-align:center; font-size:40px; line-height:1.2; color:#172033;">
-                    Congratulations!
+                <h1 style="margin:0; text-align:center; font-size:36px; line-height:1.2; color:#172033;">
+                    Application Update
                 </h1>
 
                 <h2 style="margin:15px 0 0; text-align:center; font-size:22px; line-height:1.4; color:#172033;">
-                    Your merchant application has been approved
+                    Your merchant application was not approved
                 </h2>
 
                 <p style="margin:25px auto 35px; max-width:530px; text-align:center;
                           font-size:16px; line-height:1.8; color:#60708a;">
-                    We're excited to let you know that your request to become
-                    a merchant on our platform has been approved.
-                    You can now access your merchant dashboard and start
-                    managing your products and orders.
+                    Thank you for your interest in becoming a merchant on our platform.
+                    After careful review, we're unable to approve your application at this time.
                 </p>
 
                 <!-- Account Card -->
-                <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f5fbf8"
-                       style="background:#f5fbf8; border:1px solid #d9f0e7; border-radius:14px;">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#fdf6f6"
+                       style="background:#fdf6f6; border:1px solid #f5dede; border-radius:14px;">
                     <tr>
                         <td style="padding:28px 30px;">
 
                             <h3 style="margin:0 0 25px; font-size:20px; color:#172033;">
-                                Your Account Details
+                                Your Application Details
                             </h3>
 
                             <!-- Merchant Image -->
@@ -135,31 +133,23 @@
                                 <tr>
                                     <td width="90" valign="middle" style="width:90px; font-size:12px; color:#718096; white-space:nowrap;">Status :</td>
                                     <td valign="middle">
-                                        <span style="display:inline-block; padding:6px 14px; background:#d9f7e9;
-                                                     color:#11966b; border-radius:20px; font-size:13px; font-weight:bold;">
-                                            Approved
+                                        <span style="display:inline-block; padding:6px 14px; background:#fde2e2;
+                                                     color:#c53030; border-radius:20px; font-size:13px; font-weight:bold;">
+                                            Rejected
                                         </span>
                                     </td>
                                 </tr>
                             </table>
 
                             <!-- Divider -->
-                            <div style="height:1px; background:#dcebe5; margin:28px 0;"></div>
+                            <div style="height:1px; background:#f0dede; margin:28px 0;"></div>
 
-                            <!-- Dashboard -->
-                            <h3 style="margin:0 0 8px; font-size:18px; color:#172033;">
-                                Your Merchant Dashboard
-                            </h3>
-
-                            <p style="margin:0 0 12px; font-size:14px; line-height:1.6; color:#718096;">
-                                You can access your merchant dashboard at:
+                            <!-- What's next -->
+                            <h3 style="margin:0 0 8px; font-size:18px; color:#172033;">What's next?</h3>
+                            <p style="margin:0; font-size:14px; line-height:1.6; color:#718096;">
+                                You're welcome to review your information and submit a new application.
+                                If you have any questions, please contact our support team.
                             </p>
-
-                            <div style="background:#edf2f7; border-radius:8px; padding:14px 16px;
-                                        font-family:monospace; font-size:14px; color:#344054;"
-                                 bgcolor="#edf2f7">
-                                dashboard/index
-                            </div>
 
                         </td>
                     </tr>
@@ -178,10 +168,10 @@
 
         <!-- Footer -->
         <tr>
-            <td bgcolor="#f8faf9" style="padding:25px 30px; text-align:center; background:#f8faf9;
-                                         border-top:1px solid #eef2f1;">
+            <td bgcolor="#faf8f8" style="padding:25px 30px; text-align:center; background:#faf8f8;
+                                         border-top:1px solid #f2eeee;">
                 <p style="margin:0; font-size:13px; color:#8995a7;">
-                    Thank you for being a part of our community.
+                    Thank you for your interest in our community.
                 </p>
             </td>
         </tr>
