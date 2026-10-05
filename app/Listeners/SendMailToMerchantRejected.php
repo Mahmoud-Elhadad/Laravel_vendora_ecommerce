@@ -3,8 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\MerchantRejected;
+use App\Mail\MerchantRejectedMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
 
 class SendMailToMerchantRejected
 {
@@ -21,6 +23,6 @@ class SendMailToMerchantRejected
      */
     public function handle(MerchantRejected $event): void
     {
-        //
+        Mail::to($event->merchant->user["email"])->send(new MerchantRejectedMail($event->merchant));
     }
 }
