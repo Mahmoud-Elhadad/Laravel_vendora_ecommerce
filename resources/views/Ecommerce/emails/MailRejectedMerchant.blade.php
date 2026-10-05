@@ -76,7 +76,7 @@
                                 Your Application Details
                             </h3>
 
-                            <!-- Merchant Image -->
+                            <!-- Merchant Image (fixed) -->
                             <table cellpadding="0" cellspacing="0" border="0" align="center"
                                    style="margin:0 auto 28px;">
                                 <tr>
@@ -97,44 +97,42 @@
                             <!-- First Name -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
-                                    <td width="90" valign="top" style="width:90px; font-size:12px; color:#718096; white-space:nowrap; padding-top:2px;">First Name :</td>
-                                    <td valign="top" style="font-size:15px; color:#172033;">{{ $merchant->user->first_name }}</td>
+                                    <td width="35%" style="font-size:12px; color:#718096;">First Name :</td>
+                                    <td style="font-size:10px; color:#172033;">{{ $merchant->user->first_name }}</td>
                                 </tr>
                             </table>
 
                             <!-- Last Name -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
-                                    <td width="90" valign="top" style="width:90px; font-size:12px; color:#718096; white-space:nowrap; padding-top:2px;">Last Name :</td>
-                                    <td valign="top" style="font-size:15px; color:#172033;">{{ $merchant->user->last_name }}</td>
+                                    <td width="35%" style="font-size:12px; color:#718096;">Last Name :</td>
+                                    <td style="font-size:10px; color:#172033;">{{ $merchant->user->last_name }}</td>
                                 </tr>
                             </table>
 
                             <!-- Email -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
-                                    <td width="90" valign="top" style="width:90px; font-size:12px; color:#718096; white-space:nowrap; padding-top:2px;">Email :</td>
-                                    <td valign="top" style="font-size:13px; color:#172033; word-break:break-all; -ms-word-break:break-all;">
-                                        <a href="mailto:{{ $merchant->user->email }}" style="color:#172033; text-decoration:none;">{{ $merchant->user->email }}</a>
-                                    </td>
+                                    <td width="35%" style="font-size:12px; color:#718096;">Email :</td>
+                                    <td style="font-size:13px; color:#172033;">{{ $merchant->user->email }}</td>
                                 </tr>
                             </table>
 
                             <!-- Phone -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
-                                    <td width="90" valign="top" style="width:90px; font-size:12px; color:#718096; white-space:nowrap; padding-top:2px;">Phone :</td>
-                                    <td valign="top" style="font-size:15px; color:#172033;">{{ $merchant->user->phone }}</td>
+                                    <td width="35%" style="font-size:12px; color:#718096;">Phone :</td>
+                                    <td style="font-size:10px; color:#172033;">{{ $merchant->user->phone }}</td>
                                 </tr>
                             </table>
 
                             <!-- Status -->
                             <table width="100%" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td width="90" valign="middle" style="width:90px; font-size:12px; color:#718096; white-space:nowrap;">Status :</td>
-                                    <td valign="middle">
+                                    <td width="35%" style="font-size:12px; color:#718096;">Status :</td>
+                                    <td>
                                         <span style="display:inline-block; padding:6px 14px; background:#fde2e2;
-                                                     color:#c53030; border-radius:20px; font-size:13px; font-weight:bold;">
+                                                     color:#c53030; border-radius:20px; font-size:10px; font-weight:bold;">
                                             Rejected
                                         </span>
                                     </td>
