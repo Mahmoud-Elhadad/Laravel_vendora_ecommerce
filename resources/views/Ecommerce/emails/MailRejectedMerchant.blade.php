@@ -98,7 +98,7 @@
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
                                     <td width="35%" style="font-size:12px; color:#718096;">First Name :</td>
-                                    <td style="font-size:10px; color:#172033;">{{ $merchant->user->first_name }}</td>
+                                    <td style="font-size:12px; color:#172033;">{{ $merchant->user->first_name }}</td>
                                 </tr>
                             </table>
 
@@ -106,15 +106,15 @@
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
                                     <td width="35%" style="font-size:12px; color:#718096;">Last Name :</td>
-                                    <td style="font-size:10px; color:#172033;">{{ $merchant->user->last_name }}</td>
+                                    <td style="font-size:12px; color:#172033;">{{ $merchant->user->last_name }}</td>
                                 </tr>
                             </table>
 
                             <!-- Email -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
-                                    <td width="35%" style="font-size:12px; color:#718096;">Email :</td>
-                                    <td style="font-size:13px; color:#172033;">{{ $merchant->user->email }}</td>
+                                    <td width="35%" style="font-size:10px; color:#718096;">Email :</td>
+                                    <td style="font-size:10px; color:#172033;">{{ $merchant->user->email }}</td>
                                 </tr>
                             </table>
 
@@ -122,7 +122,7 @@
                             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;">
                                 <tr>
                                     <td width="35%" style="font-size:12px; color:#718096;">Phone :</td>
-                                    <td style="font-size:10px; color:#172033;">{{ $merchant->user->phone }}</td>
+                                    <td style="font-size:12px; color:#172033;">{{ $merchant->user->phone }}</td>
                                 </tr>
                             </table>
 
@@ -132,7 +132,7 @@
                                     <td width="35%" style="font-size:12px; color:#718096;">Status :</td>
                                     <td>
                                         <span style="display:inline-block; padding:6px 14px; background:#fde2e2;
-                                                     color:#c53030; border-radius:20px; font-size:10px; font-weight:bold;">
+                                                     color:#c53030; border-radius:20px; font-size:12px; font-weight:bold;">
                                             Rejected
                                         </span>
                                     </td>
