@@ -17,9 +17,10 @@ class MerchantRejected
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public $merchant;
+    public function __construct($merchant)
     {
-        //
+        $this->merchant = $merchant;
     }
 
     /**
