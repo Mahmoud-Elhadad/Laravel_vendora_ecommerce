@@ -171,10 +171,10 @@
 | Layer | Technology |
 |---|---|
 | Framework | Laravel 12 (PHP 8.2) |
-| Frontend Styling | Bootstrap CSS v4 |
+| Frontend Styling | Bootstrap CSS v5 & HTML & JQuery |
 | Build Tool | Vite 7 |
 | HTTP Client | Axios |
-| Database | MySQL / SQLite |
+| Database | MySQL |
 | Testing | Pest v3 + PestPlugin for Laravel |
 | Code Style | Laravel Pint |
 | Dev Server | Laravel Sail / XAMPP |
