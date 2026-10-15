@@ -1,59 +1,281 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center">🛍️ Vendora — Multi-Vendor E-Commerce Platform</h1>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  A full-featured multi-vendor e-commerce platform built with <strong>Laravel 12</strong> and <strong>Tailwind CSS v4</strong>, supporting three distinct user roles: Super Admin, Admin/Merchant, and Customer.
 </p>
 
-## About Laravel
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel 12"/>
+  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.2"/>
+  <img src="https://img.shields.io/badge/TailwindCSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"/>
+  <img src="https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite"/>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Vendora** is a production-ready multi-vendor e-commerce system where merchants can register and manage their own product listings after admin approval. The platform features a clean customer-facing storefront alongside a powerful admin dashboard, all powered by a clean Laravel 12 architecture.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## ✨ Core Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🔐 Authentication & Authorization
 
-## Laravel Sponsors
+- **Dual authentication system** — separate guards for the dashboard (`dashboard` guard for Admins) and the storefront (`ecomm` guard for Customers/Merchants)
+- **Role-Based Access Control (RBAC)** with three roles: `super admin`, `admin`, and `merchant`
+- **Laravel Gates & Policies** — fine-grained authorization using `ProductPolicy` and custom Gate definitions (`show-dashboard`, `delete-access`, `update-access`, `merchant-update-product`)
+- **Merchant access to dashboard** — approved merchants log in through the same dashboard login and get access to their product management panel
+- **Middleware protection** on all dashboard and storefront routes (`AuthAdminMiddleware`, `AuthEcommMiddleware`)
+- Password change with current-password verification
+- Profile image upload with old image cleanup
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+### 👥 User Roles & Capabilities
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+| Feature | Super Admin | Admin | Merchant | Customer |
+|---|---|---|---|---|
+| Manage Admins (CRUD) | ✅ | ❌ | ❌ | ❌ |
+| Manage All Products | ✅ | ✅ | Own only | ❌ |
+| Manage Categories | ✅ | ✅ | ❌ | ❌ |
+| Approve / Reject Merchants | ✅ | ✅ | ❌ | ❌ |
+| View Customers & Spend | ✅ | ✅ | ❌ | ❌ |
+| View Messages | ✅ | ✅ | ❌ | ❌ |
+| Receive Notifications | ✅ | ✅ | ❌ | ❌ |
+| Add to Cart / Wishlist | ❌ | ❌ | ❌ | ✅ |
+| Browse & Shop | ❌ | ❌ | ❌ | ✅ |
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 🏪 Merchant System
 
-## Code of Conduct
+- Customers can **apply to become a merchant** — a merchant record is created with a `pending` status
+- Admins **approve or reject** merchants from the dashboard
+- On approval/rejection, **automated emails** are dispatched via Laravel Events & Listeners:
+  - `MerchantApproved` event → `SendMailToMerchantApproved` listener → `MerchantApprovedMail`
+  - `MerchantRejected` event → `SendMailToMerchantRejected` listener → `MerchantRejectedMail`
+- Approved merchants gain **dashboard access** and can manage only their own products (enforced via Gate)
+- Merchant can be demoted back to customer by destroying their merchant record
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+### 🛒 E-Commerce Storefront
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **Home page** with latest products, best-sellers section, and category listings — all **cached for 1 hour** using `Cache::put()` and `Cache::memo()`
+- **Shop page** with:
+  - Real-time **search by product name**
+  - **Filter by category**
+  - **Sort options**: Newest, Price (Low → High), Price (High → Low), Most Popular
+  - **Pagination** (12 products per page) with preserved query string
+- **Product details page** with full description and images
+- **Quick view** modal for fast product preview
+- **Category browsing** page
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 🛍️ Shopping Cart
+
+- Add products to cart with **quantity tracking**
+- Update item quantities from the cart page
+- Remove individual items or **clear the entire cart**
+- Cart **persists in the database** (linked to authenticated user)
+- Cart count visible across the storefront
+
+---
+
+### ❤️ Wishlist
+
+- Add/remove products to a personal wishlist
+- **Move all wishlist items to cart** in one click
+- **Clear entire wishlist** at once
+- Wishlisted products are visually highlighted on the shop and home pages (server-side `wishlistedIds` check)
+
+---
+
+### 📦 Product Management
+
+- Full **CRUD** for products from the dashboard
+- **Multiple image support** per product (via `Image` model and `saveImg`/`deleteImg` helpers)
+- Automatic **category product count** tracking on create/delete
+- Product fields: name, price, discount, stock count, sold quantity, description, category, merchant
+- **Cache invalidation** on every product create/update/delete (`products.latest`, `best_products_sold`, `all_categories`)
+
+---
+
+### 🗂️ Category Management
+
+- Full **CRUD** for categories with automatic `num_products` counter
+- Categories with zero products are hidden from the storefront
+
+---
+
+### 👤 Customer Management (Admin Panel)
+
+- View all registered customers with:
+  - Cart item count and wishlist count
+  - **Total amount spent** (calculated dynamically from cart × product price)
+- Add new customers directly from the dashboard (with optional role assignment)
+- Delete customer accounts with image cleanup
+
+---
+
+### 🔔 Notifications System
+
+- **Database + email notifications** using Laravel's built-in Notifiable system
+- Admins receive a database notification when a new customer registers (`RegisterClient` notification)
+- Notification center page showing: total notifications, unread count, notification content
+- **Mark as read** functionality per notification
+
+---
+
+### 📩 Messages / Contact System
+
+- Customers can send contact messages from the storefront
+- Messages are stored in the database (`user_messages` table)
+- Dashboard page displays all messages with **read/unread status**
+- Admins can mark messages as viewed or **delete** them
+
+---
+
+### 👨‍💼 Admin Profile
+
+- Personal profile page for the logged-in admin/staff member
+- **AJAX-based profile image upload** (returns JSON with new image URL)
+- Secure password change with current-password check and confirmation
+
+---
+
+### 📧 Email System
+
+- **Event-driven mailable architecture** using Laravel Events, Listeners, and Mailables
+- `UserRegistered` event → `SendMailOnUserRegistered` listener → `UserAddedMail`
+- `MerchantApproved` event → `MerchantApprovedMail`
+- `MerchantRejected` event → `MerchantRejectedMail`
+- All mail classes are queue-ready
+
+---
+
+### ⚡ Performance & Caching
+
+- Homepage data (latest products, best-sellers, categories) cached for **1 hour**
+- `Cache::memo()` used for in-request memoization of category queries
+- Cache is **automatically invalidated** on any product or category change
+- Eager loading (`with()`) used throughout to prevent N+1 queries
+
+---
+
+## 🏗️ Architecture & Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Laravel 12 (PHP 8.2) |
+| Frontend Styling | Tailwind CSS v4 |
+| Build Tool | Vite 7 |
+| HTTP Client | Axios |
+| Database | MySQL / SQLite |
+| Testing | Pest v3 + PestPlugin for Laravel |
+| Code Style | Laravel Pint |
+| Dev Server | Laravel Sail / XAMPP |
+
+### Key Laravel Features Used
+
+- **Multiple Authentication Guards** (`dashboard`, `ecomm`)
+- **Gates & Policies** for RBAC
+- **Events & Listeners** (event-driven architecture)
+- **Notifications** (database + mail channels)
+- **Mailables** with queued support
+- **Form Requests** for validation (`ProductAddRequest`, `AdminAddRequest`, etc.)
+- **Eloquent Relationships** (HasOne, HasMany, BelongsTo)
+- **Cache** (store, retrieve, invalidate)
+- **Route Groups & Named Routes**
+- **Middleware** (custom auth middleware per guard)
+- **File Storage** (`storage_path`, `move_uploaded_file`)
+- **Pagination** with query string preservation
+
+---
+
+## 🗃️ Database Schema
+
+```
+admins          — Dashboard staff (name, email, password, role, gender, phone, location, age, img)
+ecomm_users     — Storefront users (first_name, last_name, email, phone, password, image, role)
+merchents       — Merchant profiles (user_id, status, approved_at, rejected_at, rejected_reason)
+cats            — Product categories (name, num_products, ...)
+products        — Product listings (name, price, discount, count, sold_quantity, cat_id, merchent_id)
+images          — Product images (product_id, img_name)
+carts           — Cart items (user_id, product_id, count)
+whilists        — Wishlist items (user_id, product_id)
+user_messages   — Contact form messages
+notifications   — Laravel database notifications
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- PHP 8.2+
+- Composer
+- Node.js & npm
+- MySQL or SQLite
+
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/laravel-vendora-ecommerce.git
+cd laravel-vendora-ecommerce
+
+# 2. Run the setup script (installs deps, generates key, migrates, builds assets)
+composer run setup
+
+# 3. Configure environment
+cp .env.example .env
+# Edit .env with your DB credentials and mail settings
+```
+
+### Development Server
+
+```bash
+# Starts Laravel, queue worker, Pail log viewer, and Vite simultaneously
+composer run dev
+```
+
+### Running Tests
+
+```bash
+php artisan test --compact
+```
+
+---
+
+## 📁 Project Structure
+
+```
+app/
+├── Events/          # MerchantApproved, MerchantRejected, UserRegistered
+├── Listeners/       # Email dispatch listeners
+├── Mail/            # Mailables (approved, rejected, user added)
+├── Models/          # Admin, EcommUser, Merchent, Product, Cat, Cart, Whilist, Image
+├── Notifications/   # RegisterClient (db + mail)
+├── Policies/        # ProductPolicy
+├── Http/
+│   ├── Controllers/ # AdminController, ProductController, EcommController, etc.
+│   ├── Middleware/  # AuthAdminMiddleware, AuthEcommMiddleware
+│   └── Requests/    # Form request validators
+resources/views/
+├── Dashboard/       # Admin & merchant panel views
+└── Ecommerce/       # Customer-facing storefront views
+routes/
+├── dashboard.php    # Protected dashboard routes
+└── web.php          # Storefront routes
+```
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
