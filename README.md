@@ -171,7 +171,7 @@
 | Layer | Technology |
 |---|---|
 | Framework | Laravel 12 (PHP 8.2) |
-| Frontend Styling | Tailwind CSS v4 |
+| Frontend Styling | Bootstrap CSS v4 |
 | Build Tool | Vite 7 |
 | HTTP Client | Axios |
 | Database | MySQL / SQLite |
