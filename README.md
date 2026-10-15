@@ -1,13 +1,13 @@
 <h1 align="center">🛍️ Vendora — Multi-Vendor E-Commerce Platform</h1>
 
 <p align="center">
-  A full-featured multi-vendor e-commerce platform built with <strong>Laravel 12</strong> and <strong>Tailwind CSS v4</strong>, supporting three distinct user roles: Super Admin, Admin/Merchant, and Customer.
+  A full-featured multi-vendor e-commerce platform built with <strong>Laravel 12</strong> and <strong>Bootstrap CSS v5</strong>, supporting three distinct user roles: Super Admin, Admin/Merchant, and Customer.
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel 12"/>
   <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.2"/>
-  <img src="https://img.shields.io/badge/TailwindCSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"/>
+  <img src="https://img.shields.io/badge/Bootstrap-v5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap CSS"/>
   <img src="https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite"/>
 </p>
 
