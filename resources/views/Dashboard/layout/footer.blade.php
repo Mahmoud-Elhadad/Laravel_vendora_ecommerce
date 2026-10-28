@@ -100,6 +100,18 @@
 
         })
     </script>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const badge = document.getElementById('notify-badge');
+            if (!badge || !window.Echo) return;
+
+            window.Echo.private('admins-notifications')
+                .listen('UserRegistered', () => {
+                    badge.textContent = (parseInt(badge.textContent) || 0) + 1;
+                    badge.classList.remove('d-none');
+                });
+        });
+    </script>
 
   </body>
 </html>
